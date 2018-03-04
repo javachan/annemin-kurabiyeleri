@@ -1,7 +1,7 @@
 package com.yilmazmehmet.anneminkurabiyeleribackend;
 
 /**
- * Hello world!a
+ * Hello world!
  *
  */
 public class App 
