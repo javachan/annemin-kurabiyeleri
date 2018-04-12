@@ -20,6 +20,11 @@
     <meta name="author" content="">
 
     <title>${title} - Annemin Kurabiyelerii</title>
+    <script>
+    
+    window.menu='${title}';
+    
+    </script>
 
     <!-- Bootstrap Core CSS -->
     <link href="${css}/bootstrap.min.css" rel="stylesheet">
@@ -72,6 +77,9 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="${js}/bootstrap.min.js"></script>
 
+
+<!-- Menu Link Aktif -->
+    <script src="${js}/myapp.js"></script>
 </body>
 
 </html>

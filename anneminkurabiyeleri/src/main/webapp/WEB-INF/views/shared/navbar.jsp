@@ -8,18 +8,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${contextRoot }">Annemin Kurabiyeleri</a>
+                <a class="navbar-brand" href="${contextRoot }/anasayfa">Annemin Kurabiyeleri</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li id="hakkimizda">
                         <a href="${contextRoot }/hakkimizda">Hakkimizda</a>
                     </li>
-                    <li>
+                    <li id="urunleriListele">
                         <a href="${contextRoot }/urunleriListele">Urunler</a>
                     </li>
-                    <li>
+                    <li id="iletisim">
                         <a href="${contextRoot }/iletisim">Iletisim</a>
                     </li>
                 </ul>
