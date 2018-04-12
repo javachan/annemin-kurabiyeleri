@@ -9,11 +9,31 @@ import org.springframework.web.servlet.ModelAndView;
 public class PageController {
 	
 	
-@RequestMapping(value = {"/","/home","/index"})
+@RequestMapping(value = {"/","/anasayfa","/index"})
 public ModelAndView index(){
 	
 	ModelAndView mv = new ModelAndView("page");
-	mv.addObject("greeting","Welcome to Spring Web Mvc");
+	mv.addObject("title","Anasayfa");
+	mv.addObject("anasayfaMi",true);
+	return mv;
+}
+
+
+@RequestMapping(value = "/hakkimizda")
+public ModelAndView hakkimizda(){
+	
+	ModelAndView mv = new ModelAndView("page");
+	mv.addObject("title","Hakkimizda");
+	mv.addObject("hakkimizdaMi",true);
+	return mv;
+}
+
+@RequestMapping(value = "/iletisim")
+public ModelAndView iletisim(){
+	
+	ModelAndView mv = new ModelAndView("page");
+	mv.addObject("title","Iletisim");
+	mv.addObject("iletisimMi",true);
 	return mv;
 }
 /*
@@ -33,7 +53,7 @@ public ModelAndView test(@PathVariable("greating")String greating){
 		greating="Hello There";
 	}
 	ModelAndView mv = new ModelAndView("page");
-	mv.addObject("greeting",greating);
+	mv.addObject("title","Anasayfa");
 	return mv;
 }
 }
