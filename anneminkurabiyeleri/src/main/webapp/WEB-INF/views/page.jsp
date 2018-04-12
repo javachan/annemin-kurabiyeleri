@@ -28,6 +28,9 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="${css}/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Readable theme -->
+    <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="${css}/myapp.css" rel="stylesheet">
@@ -42,13 +45,13 @@
 </head>
 
 <body>
-
+<div class="wrapper">
     <!-- Navigation -->
     <%@include file="./shared/navbar.jsp"  %>
     
     
     <!-- Page Content -->
-    
+    <div class="content">
     <!-- Anasayfa oldugu zaman -->
     <c:if  test="${anasayfaMi==true }">
    <%@include file="home.jsp" %>
@@ -66,7 +69,7 @@
 
 
 
-
+</div>
 
     <%@include file="./shared/footer.jsp" %>
     <!-- /.container -->
@@ -80,6 +83,8 @@
 
 <!-- Menu Link Aktif -->
     <script src="${js}/myapp.js"></script>
+    
+    </div>
 </body>
 
 </html>
