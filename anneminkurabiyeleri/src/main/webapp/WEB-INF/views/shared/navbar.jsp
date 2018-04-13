@@ -16,11 +16,13 @@
                     <li id="hakkimizda">
                         <a href="${contextRoot }/hakkimizda">Hakkimizda</a>
                     </li>
-                    <li id="urunleriListele">
-                        <a href="${contextRoot }/urunleriListele">Urunler</a>
-                    </li>
+                   
                     <li id="iletisim">
                         <a href="${contextRoot }/iletisim">Iletisim</a>
+                    </li>
+                    
+                     <li id="urunleriListele">
+                        <a href="${contextRoot }/goster/hepsi/urunler">Urunler</a>
                     </li>
                 </ul>
             </div>

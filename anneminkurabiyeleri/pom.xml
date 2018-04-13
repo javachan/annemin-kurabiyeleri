@@ -25,7 +25,14 @@
     <version>${javaee.version}</version>
     <scope>provided</scope>
 </dependency>
+  <!-- Backend ile bağlama -->
   
+  <dependency>
+  <groupId>com.yilmazmehmet</groupId>
+  <artifactId>anneminkurabiyeleribackend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  </dependency>
   <!-- JUNIT -->
     <dependency>
       <groupId>junit</groupId>

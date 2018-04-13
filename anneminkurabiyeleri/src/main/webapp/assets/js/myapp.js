@@ -7,8 +7,22 @@ $(function() {
 		case 'Iletisim':
 			$('#iletisim').addClass('active');
 			break;
-		default:
-			$('#anasayfa').addClass('active');
+			
+		case 'Tum Urunler':
+			$('#urunleriListele').addClass('active');
 			break;
+		default:
+			$('#urunleriListele').addClass('active');
+			
+			break;
+	}
+	
+	switch (numara) {
+	case numara:
+		$('#'+numara).addClass('active');
+		break;
+
+	default:
+		break;
 	}
 });

@@ -23,6 +23,7 @@
     <script>
     
     window.menu='${title}';
+    window.numara='${id}';
     
     </script>
 
@@ -65,6 +66,12 @@
 <!-- iletisim oldugu zaman -->
 <c:if  test="${iletisimMi==true }">
    <%@include file="iletisim.jsp" %>
+</c:if>
+
+
+<!-- kategori oldugu zaman -->
+<c:if  test="${tumUrunleriListeleMi==true or kategoriyeGoreListeliMi==true }">
+   <%@include file="urunleriListele.jsp" %>
 </c:if>
 
 
