@@ -3,13 +3,21 @@ package com.yilmazmehmet.anneminkurabiyeleribackend.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yilmazmehmet.anneminkurabiyeleribackend.dao.KategoriDAO;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kategori;
 
 @Repository("kategoriDAO")
 public class KategoriDAOImpl implements KategoriDAO {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	
 	private static List<Kategori> kategoriler = new ArrayList<>();
 	static{
 		
@@ -59,6 +67,19 @@ public class KategoriDAOImpl implements KategoriDAO {
 		}
 		
 		return null;
+	}
+	@Override
+	@Transactional
+	public boolean ekle(Kategori kategori) {
+		try{
+			
+			sessionFactory.getCurrentSession().persist(kategori);
+			return true;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }

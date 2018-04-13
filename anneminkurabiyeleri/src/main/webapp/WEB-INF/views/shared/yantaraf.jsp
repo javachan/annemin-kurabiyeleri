@@ -1,4 +1,4 @@
- <p class="lead">Shop Name</p>
+ <p class="lead">Kategoriler</p>
 <div class="list-group">
 
 	<c:forEach items="${kategoriler }" var="kategori">
