@@ -7,8 +7,10 @@ import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kategori;
 
 
 public interface KategoriDAO {
-	boolean ekle(Kategori kategori);
-	List<Kategori> listele();
 	Kategori get(int id);
+	List<Kategori> listele();
+	boolean ekle(Kategori kategori);
+	boolean guncelle(Kategori kategori);
+	boolean sil(Kategori kategori);
 	
 }

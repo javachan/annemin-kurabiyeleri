@@ -12,6 +12,7 @@ $(function() {
 			$('#urunleriListele').addClass('active');
 			break;
 		default:
+			if(menu=="Anasayfa") break;
 			$('#urunleriListele').addClass('active');
 			
 			break;
