@@ -24,14 +24,20 @@
     
     window.menu='${title}';
     window.numara='${id}';
+    window.contextRoot='${contextRoot}';
     
     </script>
 
     <!-- Bootstrap Core CSS -->
     <link href="${css}/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Bootstrap Readable theme -->
+    <!-- Bootstrap Datatables theme -->
     <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+    
+    
+     <!-- Bootstrap Readable theme -->
+    <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+    
 
     <!-- Custom CSS -->
     <link href="${css}/myapp.css" rel="stylesheet">
@@ -87,7 +93,11 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="${js}/bootstrap.min.js"></script>
 
-
+ <!-- datatable -->
+    <script src="${js}/jquery.dataTables.js"></script>
+    
+     <!-- datatable boostrap -->
+    <script src="${js}/dataTables.bootstrap.js"></script>
 <!-- Menu Link Aktif -->
     <script src="${js}/myapp.js"></script>
     

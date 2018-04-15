@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Urun {
 	
@@ -17,13 +19,17 @@ public class Urun {
 	private String kod;
 	private String ad;
 	private String marka;
+	@JsonIgnore
 	private String aciklama;
 	private double fiyat;
 	private int miktar;
+	@JsonIgnore
 	private boolean aktifMi;
 	@Column(name="kategori_id")
+	@JsonIgnore
 	private int kategoriId;
 	@Column(name="satici_id")
+	@JsonIgnore
 	private int saticiId;
 	private int satinAlma;
 	private int goruntulenme;
