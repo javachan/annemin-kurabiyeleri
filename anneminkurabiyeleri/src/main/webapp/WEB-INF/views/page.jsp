@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
     <spring:url var="css" value="/resources/css/"/>
@@ -78,6 +78,13 @@
 <!-- kategori oldugu zaman -->
 <c:if  test="${tumUrunleriListeleMi==true or kategoriyeGoreListeliMi==true }">
    <%@include file="urunleriListele.jsp" %>
+</c:if>
+
+
+
+<!-- urun detay -->
+<c:if  test="${urunDetayMi==true}">
+   <%@include file="urunDetay.jsp" %>
 </c:if>
 
 
