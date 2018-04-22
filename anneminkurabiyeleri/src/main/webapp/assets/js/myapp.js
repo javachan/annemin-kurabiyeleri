@@ -87,7 +87,14 @@ $(function() {
 
 							},
 							{
-								data : 'miktar'
+								data : 'miktar',
+								mRender : function(data, type, row) {
+									if (data < 1) {
+
+										return '<span style="color:red">Tukendi</span>';
+									}
+									return data;
+								}
 
 							},
 							{
@@ -101,11 +108,19 @@ $(function() {
 											+ '/goster/'
 											+ data
 											+ '/urun" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>&#160';
-									str += '<a href="'
+									
+									if(row.miktar<1){
+										str += '<a href="javascript::void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+									}else{
+										str += '<a href="'
 											+ window.contextRoot
 											+ '/sepet/ekle/'
 											+ data
 											+ '/urun" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+									}
+									
+									
+									
 									return str;
 								}
 
