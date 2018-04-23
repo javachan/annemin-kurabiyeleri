@@ -24,6 +24,10 @@
                      <li id="urunleriListele">
                         <a href="${contextRoot }/goster/hepsi/urunler">Urunler</a>
                     </li>
+                    
+                    <li id="urunleriYonet">
+                        <a href="${contextRoot }/yonetim/urunler">Urunleri Yonet</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

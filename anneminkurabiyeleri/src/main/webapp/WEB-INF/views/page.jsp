@@ -89,6 +89,14 @@
 
 
 
+
+<!-- urun yonetim -->
+<c:if  test="${urunYonetimMi==true}">
+   <%@include file="urunYonetimi.jsp" %>
+</c:if>
+
+
+
 </div>
 
     <%@include file="./shared/footer.jsp" %>

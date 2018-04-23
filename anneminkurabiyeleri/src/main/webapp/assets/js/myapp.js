@@ -11,6 +11,10 @@ $(function() {
 	case 'Tum Urunler':
 		$('#urunleriListele').addClass('active');
 		break;
+		
+	case 'Urunleri Yonet':
+		$('#urunleriYonet').addClass('active');
+		break;
 	default:
 		if (menu == "Anasayfa")
 			break;
@@ -126,6 +130,16 @@ $(function() {
 
 							} ]
 				});
+	}
+	
+	
+	//uyari kaybol
+	var $alert=$('.alert');
+	if($alert.length){
+		
+		setTimeout(function(){
+		$alert.fadeOut('slow');
+	},3000)
 	}
 
 });
