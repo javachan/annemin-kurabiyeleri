@@ -33,7 +33,9 @@
 
 					<!-- form elementleri gelecek -->
 					
-					<sf:form class="form-horizontal" modelAttribute="urun" action="${contextRoot}/yonetim/urunler" method="POST" >
+					<sf:form class="form-horizontal" modelAttribute="urun" action="${contextRoot}/yonetim/urunler" method="POST" 
+					enctype="multipart/form-data"
+					>
 						<div class="form-group">
 							<label class="control-label col-md-4">Ad</label>
 							<div class="col-md-8">
@@ -78,6 +80,17 @@
 								<sf:errors path="miktar" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
+						
+						
+						<div class="form-group">
+							<label class="control-label col-md-4" for="file">Resim Sec :</label>
+							<div class="col-md-8">
+								<sf:input type="file" path="file" class="form-control"
+									/>
+								 
+							</div>
+						</div>
+						
 
 
 						<div class="form-group">

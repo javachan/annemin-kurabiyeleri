@@ -2,6 +2,7 @@ package com.yilmazmehmet.anneminkurabiyeleri.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yilmazmehmet.anneminkurabiyeleri.util.DosyaYuklemeU;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dao.KategoriDAO;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dao.UrunDAO;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kategori;
@@ -56,7 +58,7 @@ public class YonetimController {
 	}
 	
 	@RequestMapping(value="/urunler",method=RequestMethod.POST)
-	public String urunlerPostEtme(@Valid @ModelAttribute("urun") Urun mUrun ,BindingResult results, Model model){
+	public String urunlerPostEtme(@Valid @ModelAttribute("urun") Urun mUrun ,BindingResult results, Model model,HttpServletRequest request){
 		if(results.hasErrors()){
 			
 			model.addAttribute("urunYonetimMi",true);
@@ -69,6 +71,17 @@ public class YonetimController {
 		logger.info(mUrun.toString());
 		//yeni urun kaydet
 				urunDA.ekle(mUrun);
+				
+				
+				
+		if(!mUrun.getFile().getOriginalFilename().equals("")){
+			
+			DosyaYuklemeU.dosyaYukle(request,mUrun.getFile(),mUrun.getKod());
+			
+		}		
+				
+				
+				
 		return "redirect:/yonetim/urunler?operation=urun"; 
 	}
 	
