@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,10 +20,15 @@ public class Urun {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String kod;
+	
+	@NotBlank(message="Lutfen urun adini giriniz !")
 	private String ad;
+	@NotBlank(message="Lutfen marka adini giriniz !")
 	private String marka;
 	@JsonIgnore
+	@NotBlank(message="Lutfen aciklama giriniz !")
 	private String aciklama;
+	@Min(value=1,message="Fiyat 1 den kucuk olamaz !")
 	private double fiyat;
 	private int miktar;
 	@JsonIgnore
