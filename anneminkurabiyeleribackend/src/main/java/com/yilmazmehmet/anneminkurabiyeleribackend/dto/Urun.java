@@ -33,7 +33,7 @@ public class Urun {
 	@Min(value=1,message="Fiyat 1 den kucuk olamaz !")
 	private double fiyat;
 	private int miktar;
-	@JsonIgnore
+
 	private boolean aktifMi;
 	@Column(name="kategori_id")
 	@JsonIgnore

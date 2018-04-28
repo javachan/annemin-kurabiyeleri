@@ -1,20 +1,20 @@
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container">
 
 	<div class="row">
-<c:if test="${not empty mesaj}">	
-		 			
+		<c:if test="${not empty mesaj}">
+
 			<div class="col-xs-12">
-			<div class="alert alert-success alert-dismissible">
-			
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			${mesaj}
+				<div class="alert alert-success alert-dismissible">
+
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					${mesaj}
+				</div>
+
 			</div>
-			 
-			</div>
-	 
-	</c:if>
+
+		</c:if>
 		<div class="col-md-offset-2 col-md-8">
 
 
@@ -32,25 +32,25 @@
 
 
 					<!-- form elementleri gelecek -->
-					
-					<sf:form class="form-horizontal" modelAttribute="urun" action="${contextRoot}/yonetim/urunler" method="POST" 
-					enctype="multipart/form-data"
-					>
+
+					<sf:form class="form-horizontal" modelAttribute="urun"
+						action="${contextRoot}/yonetim/urunler" method="POST"
+						enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="control-label col-md-4">Ad</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="ad" class="form-control"
 									placeholder="Urun Adi" />
-								<sf:errors path="ad" cssClass="help-block" element="em"/> 
+								<sf:errors path="ad" cssClass="help-block" element="em" />
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-md-4">Marka</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="marka" class="form-control"
-									placeholder="Marka Adi" /> 
-								<sf:errors path="marka" cssClass="help-block" element="em"/>	
+									placeholder="Marka Adi" />
+								<sf:errors path="marka" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
@@ -58,8 +58,8 @@
 							<label class="control-label col-md-4">Aciklama</label>
 							<div class="col-md-8">
 								<sf:textarea path="aciklama" class="form-control"
-									placeholder="Urun Aciklamasini gir !" /> 
-								<sf:errors path="aciklama" cssClass="help-block" element="em"/>
+									placeholder="Urun Aciklamasini gir !" />
+								<sf:errors path="aciklama" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
@@ -68,7 +68,7 @@
 							<div class="col-md-8">
 								<sf:input type="number" path="fiyat" class="form-control"
 									placeholder="Fiyat Gir" />
-								<sf:errors path="fiyat" cssClass="help-block" element="em"/>
+								<sf:errors path="fiyat" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
@@ -77,50 +77,55 @@
 							<div class="col-md-8">
 								<sf:input type="number" path="miktar" class="form-control"
 									placeholder="Miktar Gir" />
-								<sf:errors path="miktar" cssClass="help-block" element="em"/> 
+								<sf:errors path="miktar" cssClass="help-block" element="em" />
 							</div>
 						</div>
-						
-						
+
+
 						<div class="form-group">
-							<label class="control-label col-md-4" for="file">Resim Sec :</label>
+							<label class="control-label col-md-4" for="file">Resim
+								Sec :</label>
 							<div class="col-md-8">
-								<sf:input type="file" path="file" class="form-control"
-									/>
-								 
+								<sf:input type="file" path="file" class="form-control" />
+								<sf:errors path="file" cssClass="help-block" element="em" />
+
 							</div>
 						</div>
-						
+
 
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Kategori</label>
 							<div class="col-md-8">
-								<sf:select path="kategoriId" items="${kategoriler}" itemLabel="ad" itemValue="id" class="form-control"/>
-							
+								<sf:select path="kategoriId" items="${kategoriler}"
+									itemLabel="ad" itemValue="id" class="form-control" />
+
 								<div class="text-right">
-									<br/>			
-									<sf:hidden path="id"/>
-									<sf:hidden path="kod"/>
-									<sf:hidden path="saticiId"/>
-									<sf:hidden path="aktifMi"/>														
-									<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myCategoryModal">Yeni Kategori Ekle</button>
-								</div>							
+									<br />
+									<sf:hidden path="id" />
+									<sf:hidden path="kod" />
+									<sf:hidden path="saticiId" />
+									<sf:hidden path="aktifMi" />
+									<button type="button" class="btn btn-warning btn-xs"
+										data-toggle="modal" data-target="#myCategoryModal">Yeni
+										Kategori Ekle</button>
+								</div>
 							</div>
-							
+
 						</div>
 
 
-					
+
 						<div class="form-group">
-							
+
 							<div class="col-md-offset-4 col-md-4">
-							
-								<input type="submit" name="gonder" value="Kaydet" class="btn btn-primary"/>
-								
+
+								<input type="submit" name="gonder" value="Kaydet"
+									class="btn btn-primary" />
+
 							</div>
-						</div>						
-										
+						</div>
+
 					</sf:form>
 
 
@@ -135,6 +140,77 @@
 
 
 	</div>
+	<div class="row">
 
+
+		<div class="col-xs-12">
+
+			<h3>Urunler</h3>
+			</hr>
+		</div>
+
+
+		<div class="col-xs-12">
+
+			<div style="overflow: auto">
+
+
+
+
+
+
+				<table id="adminUrunListele" class="table table-striped table-bordered">
+					
+
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>&#160;</th>
+							<th>Ad</th>
+							<th>Marka</th>
+							<th>Miktar</th>
+							<th>Fiyat</th>
+							<th>Aktif </th>
+							<th>Duzenle</th>
+						</tr>
+
+					</thead>
+
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>&#160;</th>
+							<th>Ad</th>
+							<th>Marka</th>
+							<th>Miktar</th>
+							<th>Fiyat</th>
+							<th>Aktif </th>
+							<th>Duzenle</th>
+						</tr>
+
+					</tfoot>
+
+				</table>
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+	</div>
 
 </div>

@@ -11,7 +11,7 @@ $(function() {
 	case 'Tum Urunler':
 		$('#urunleriListele').addClass('active');
 		break;
-		
+
 	case 'Urunleri Yonet':
 		$('#urunleriYonet').addClass('active');
 		break;
@@ -112,34 +112,222 @@ $(function() {
 											+ '/goster/'
 											+ data
 											+ '/urun" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>&#160';
-									
-									if(row.miktar<1){
+
+									if (row.miktar < 1) {
 										str += '<a href="javascript::void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-									}else{
+									} else {
 										str += '<a href="'
-											+ window.contextRoot
-											+ '/sepet/ekle/'
-											+ data
-											+ '/urun" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+												+ window.contextRoot
+												+ '/sepet/ekle/'
+												+ data
+												+ '/urun" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 									}
-									
-									
-									
+
 									return str;
 								}
 
 							} ]
 				});
 	}
-	
-	
-	//uyari kaybol
-	var $alert=$('.alert');
-	if($alert.length){
-		
-		setTimeout(function(){
-		$alert.fadeOut('slow');
-	},3000)
+
+	// uyari kaybol
+	var $alert = $('.alert');
+	if ($alert.length) {
+
+		setTimeout(function() {
+			$alert.fadeOut('slow');
+		}, 3000)
 	}
+
+	// -----------
+	$('.switch input[type="checkbox"]')
+			.on(
+					'change',
+					function() {
+
+						var checkbox = $(this);
+						var checked = checkbox.prop('checked');
+						var dMsg = (checked) ? 'Aktif etmek istediginizden emin misiniz ?'
+								: 'Deaktif etmek istediginizden emin misiniz ?';
+						var value = checkbox.prop('value');
+						bootbox
+								.confirm({
+
+									size : 'medium',
+									title : ' Urun Aktif & Deaktif',
+									message : dMsg,
+									callback : function(confirmed) {
+
+										if (confirmed) {
+											console.log(value);
+											bootbox
+													.alert({
+														side : 'medium',
+														title : 'Bilgilendirme',
+														message : 'Urun uzerinde degisiklik yapacaksin '
+																+ value
+													});
+										} else {
+											checkbox.prop('checked', !checked);
+										}
+									}
+								});
+					});
+
+	// **************
+
+	// datatable jquery için kodlar
+
+	var $adminUruntable = $('#adminUrunListele');
+
+	// bu ttabloya ait ürünleri getir
+
+	if ($adminUruntable.length) {
+
+		var jsonUrl = window.contextRoot + '/json/data/admin/hepsi/urunler';
+		// console.log(jsonUrl);
+		$adminUruntable
+				.DataTable({
+
+					lengthMenu : [ [ 10, 30, 50, -1 ],
+							[ '10 Kayit', '30 Kayit', '50 Kayit', 'Hepsi' ] ],
+					pageLenght : 30,
+					ajax : {
+
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+
+								data : 'id'
+							},
+							{
+								data : 'kod',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									return '<img src="'
+											+ window.contextRoot
+											+ '/resources/images/'
+											+ data
+											+ '.jpg" class="adminDataTableImg"/>';
+								}
+
+							},
+							{
+								data : 'ad'
+
+							},
+							{
+								data : 'marka'
+
+							},
+							{
+								data : 'miktar',
+								mRender : function(data, type, row) {
+									if (data < 1) {
+
+										return '<span style="color:red">Tukendi</span>';
+									}
+									return data;
+								}
+
+							},
+							{
+								data : 'fiyat',
+								mRender : function(data, type, row) {
+
+									return data + ' &#8378;'
+								}
+
+							},
+
+							{
+								data : 'aktifMi',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									var str = '';
+									str += '<label class="switch">';
+
+									if (data) {
+
+										str += '<input type="checkbox" checked="checked" value="'
+												+ row.id + '" />';
+
+									} else {
+
+										str += '<input type="checkbox" value="'
+												+ row.id + '" />';
+
+									}
+									str += '<div class="slider"></div></label>';
+
+									return str;
+								}
+
+							},
+
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									var str = '';
+									str += '<a href="${contexRoot}/yonet/'
+											+ data
+											+ '/urun" class="btn btn-warning">';
+
+									str += '<span class="glyphicon glyphicon-pencil"></span></a>';
+									return str;
+
+								}
+
+							}
+
+					],
+					
+					initComplete : function(){
+						
+						var api=this.api();
+						api.$('.switch input[type="checkbox"]')
+						.on(
+								'change',
+								function() {
+
+									var checkbox = $(this);
+									var checked = checkbox.prop('checked');
+									var dMsg = (checked) ? 'Aktif etmek istediginizden emin misiniz ?'
+											: 'Deaktif etmek istediginizden emin misiniz ?';
+									var value = checkbox.prop('value');
+									bootbox
+											.confirm({
+
+												size : 'medium',
+												title : ' Urun Aktif & Deaktif',
+												message : dMsg,
+												callback : function(confirmed) {
+
+													if (confirmed) {
+														console.log(value);
+														bootbox
+																.alert({
+																	side : 'medium',
+																	title : 'Bilgilendirme',
+																	message : 'Urun uzerinde degisiklik yapacaksin '
+																			+ value
+																});
+													} else {
+														checkbox.prop('checked', !checked);
+													}
+												}
+											});
+								});
+					}
+					
+				});
+	}
+	// *********************************
 
 });

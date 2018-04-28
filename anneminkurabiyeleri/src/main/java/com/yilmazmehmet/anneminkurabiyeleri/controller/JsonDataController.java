@@ -23,6 +23,11 @@ public class JsonDataController {
 		return urunDAO.aktifUrunleriListele();
 	}
 	
+	@RequestMapping("/admin/hepsi/urunler")
+	@ResponseBody
+	public List<Urun> tumUrunleriAdminGetir() {
+		return urunDAO.listele();
+	}
 	
 	@RequestMapping("/kategori/{id}/urunler")
 	@ResponseBody

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yilmazmehmet.anneminkurabiyeleri.util.DosyaYuklemeU;
+import com.yilmazmehmet.anneminkurabiyeleri.validason.UrunValidasyon;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dao.KategoriDAO;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dao.UrunDAO;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kategori;
@@ -59,6 +60,11 @@ public class YonetimController {
 	
 	@RequestMapping(value="/urunler",method=RequestMethod.POST)
 	public String urunlerPostEtme(@Valid @ModelAttribute("urun") Urun mUrun ,BindingResult results, Model model,HttpServletRequest request){
+		
+		new UrunValidasyon().validate(mUrun, results);
+		
+		
+		
 		if(results.hasErrors()){
 			
 			model.addAttribute("urunYonetimMi",true);
