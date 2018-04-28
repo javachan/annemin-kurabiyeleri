@@ -60,10 +60,36 @@ public class YonetimController {
 		
 	}
 	
+	@RequestMapping(value="/{id}/urun",method=RequestMethod.GET)
+	public ModelAndView urunleriDuzenle(@PathVariable int id){
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("urunYonetimMi",true);
+		mv.addObject("title","Urunleri Yonet");
+		
+		Urun yeniUrun= urunDA.get(id);
+		yeniUrun.setSaticiId(1);
+		yeniUrun.setAktifMi(true);
+		mv.addObject("urun",yeniUrun);
+		
+		 
+		return mv;
+		
+	}
 	@RequestMapping(value="/urunler",method=RequestMethod.POST)
 	public String urunlerPostEtme(@Valid @ModelAttribute("urun") Urun mUrun ,BindingResult results, Model model,HttpServletRequest request){
 		
-		new UrunValidasyon().validate(mUrun, results);
+		
+		if(mUrun.getId()==0){
+			
+			new UrunValidasyon().validate(mUrun, results);
+		}else{
+			
+			if(!mUrun.getFile().getOriginalFilename().equals("")){
+				new UrunValidasyon().validate(mUrun, results);
+
+				
+			}
+		}
 		
 		
 		
@@ -78,7 +104,12 @@ public class YonetimController {
 		
 		logger.info(mUrun.toString());
 		//yeni urun kaydet
-				urunDA.ekle(mUrun);
+		if(mUrun.getId()==0){
+				urunDA.ekle(mUrun);}
+		else{
+			
+			urunDA.guncelle(mUrun);
+		}
 				
 				
 				
@@ -99,8 +130,8 @@ public class YonetimController {
 		boolean aktifMi=urun.isAktifMi();
 		urun.setAktifMi(!urun.isAktifMi());
 		urunDA.guncelle(urun);
-		return (aktifMi) ? urun.getId() + " Urun Deaktif edilmistir . " 
-				: urun.getId() + " Urun aktif edilmistir . " ;
+		return (aktifMi) ? urun.getId() + " Numarali Urun Deaktif edilmistir . " 
+				: urun.getId() + " Numarali Urun aktif edilmistir . " ;
 		
 	}
 	@ModelAttribute("kategoriler")
