@@ -355,7 +355,7 @@ $(function() {
 			},
 			aciklama :{
 				
-				required:true
+				required:true,
 				minlength :2
 			}
 			},
