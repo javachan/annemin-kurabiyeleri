@@ -275,12 +275,14 @@ $(function() {
 								mRender : function(data, type, row) {
 
 									var str = '';
-									str += '<a href="${contexRoot}/yonet/'
+									str += '<a href="'
+											+ window.contextRoot
+											+ '/yonetim/'
 											+ data
-											+ '/urun" class="btn btn-warning">';
+											+ '/urun" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
 
-									str += '<span class="glyphicon glyphicon-pencil"></span></a>';
 									return str;
+									 
 
 								}
 
@@ -311,13 +313,21 @@ $(function() {
 
 													if (confirmed) {
 														console.log(value);
-														bootbox
-																.alert({
-																	side : 'medium',
-																	title : 'Bilgilendirme',
-																	message : 'Urun uzerinde degisiklik yapacaksin '
-																			+ value
-																});
+								var aktifUrl=window.contextRoot + '/yonetim/urun/'+value+'/aktifEtme';
+														
+									$.post(aktifUrl,function(data){
+										
+										bootbox
+										.alert({
+											side : 'medium',
+											title : 'Bilgilendirme',
+											message : data
+										});
+										
+									})
+									
+									
+														
 													} else {
 														checkbox.prop('checked', !checked);
 													}

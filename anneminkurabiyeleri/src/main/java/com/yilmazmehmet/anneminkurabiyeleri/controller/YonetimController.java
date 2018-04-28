@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yilmazmehmet.anneminkurabiyeleri.util.DosyaYuklemeU;
@@ -90,7 +92,17 @@ public class YonetimController {
 				
 		return "redirect:/yonetim/urunler?operation=urun"; 
 	}
-	
+	@RequestMapping(value="/urun/{id}/aktifEtme",method=RequestMethod.POST)
+	@ResponseBody
+	public String urunAktifEtme(@PathVariable int id){
+		Urun urun =urunDA.get(id);
+		boolean aktifMi=urun.isAktifMi();
+		urun.setAktifMi(!urun.isAktifMi());
+		urunDA.guncelle(urun);
+		return (aktifMi) ? urun.getId() + " Urun Deaktif edilmistir . " 
+				: urun.getId() + " Urun aktif edilmistir . " ;
+		
+	}
 	@ModelAttribute("kategoriler")
 	public List<Kategori> kategorileriGetir(){
 		
