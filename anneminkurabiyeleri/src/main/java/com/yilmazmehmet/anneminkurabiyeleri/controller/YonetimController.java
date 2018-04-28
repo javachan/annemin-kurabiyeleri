@@ -54,6 +54,11 @@ public class YonetimController {
 				
 				mv.addObject("mesaj","Urun Basarili Sekilde Gonderildi");
 			}
+			else if(operation.equals("kategori")){
+				
+				mv.addObject("mesaj","Kategori Basarili Sekilde Eklendi");
+				
+			}
 			
 		}
 		return mv;
@@ -134,10 +139,26 @@ public class YonetimController {
 				: urun.getId() + " Numarali Urun aktif edilmistir . " ;
 		
 	}
+	
+	//yeni kategori post etme
+	@RequestMapping(value="/kategori",method=RequestMethod.POST)
+	public String kategoriEklePostEtme(@ModelAttribute Kategori kategori){
+		
+		kategoriDAO.ekle(kategori);
+		return "redirect:/yonetim/urunler?operation=kategori";
+	}
+	
+	
 	@ModelAttribute("kategoriler")
 	public List<Kategori> kategorileriGetir(){
 		
 		return kategoriDAO.listele();
+	}
+	
+	@ModelAttribute("kategori")
+	public Kategori getKategori(){
+		
+		return new Kategori();
 	}
 
 }

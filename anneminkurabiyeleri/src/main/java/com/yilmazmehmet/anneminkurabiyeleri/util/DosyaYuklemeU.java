@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class DosyaYuklemeU {
 
-	private static final String ABS_PATH = "C:/Users/yyilmazmehmet/git/annemin-kurabiyeleri/anneminkurabiyeleri/src/main/webapp/assets/images";
+	private static final String ABS_PATH = "C:/Users/yyilmazmehmet/git/annemin-kurabiyeleri/anneminkurabiyeleri/src/main/webapp/assets/images/";
 	private static String REAL_PATH = "";
 
 	private static final Logger logger = LoggerFactory

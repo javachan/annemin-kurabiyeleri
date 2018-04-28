@@ -339,5 +339,52 @@ $(function() {
 				});
 	}
 	// *********************************
-
+	
+	
+	// validasyon kodlari
+	
+	var $kategoriForm=$('#kategoriForm');
+	if($kategoriForm.length){
+		$kategoriForm.validate({
+			
+			rules :{
+				
+ 			ad : {
+				required : true,
+				minlength :2
+			},
+			aciklama :{
+				
+				required:true
+				minlength :2
+			}
+			},
+			
+			messages : {
+				
+				ad:{
+					required:'Lutfen kategori adi ekle',
+					minlength:'Minumum 2 karekter girmelisiniz'
+				},
+				aciklama:{
+					
+					required:'Lutfen kategori aciklamasi ekle',
+					minlength:'Minumum 2 karekter girmelisiniz'
+				}
+					
+			},
+			errorElement:'em',
+			errorPlacement:function(error,element){
+				
+				error.addClass('help-block');
+				error.insertAfter(element);
+			}
+		 	
+		});
+		
+	
+		
+	}
+	//----------------------------------
+	
 });
