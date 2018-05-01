@@ -43,14 +43,29 @@ public class KullaniciDAOImpl implements KullaniciDAO {
 	}
 
 	@Override
-	public boolean sepetEkle(Sepet sepet) {
+	public boolean sepetGuncelle(Sepet sepet) {
 		try {
-			sessionFactory.getCurrentSession().persist(sepet);
+			sessionFactory.getCurrentSession().update(sepet);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public Kullanici emaileGoreGetir(String email) {
+		String selectQuery="FROM Kullanici WHERE email=:email";
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery,Kullanici.class)
+					.setParameter("email", email)
+					.getSingleResult();
+		} catch (Exception e) {
+			 e.printStackTrace();
+			 return null;
+		}
+		 
 	}
 
 }

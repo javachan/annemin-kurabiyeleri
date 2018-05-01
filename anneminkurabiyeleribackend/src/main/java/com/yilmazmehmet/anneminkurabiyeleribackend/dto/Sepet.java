@@ -4,13 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Sepet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int kullaniciId;
+	
+	
+	/*------------*/
+	@OneToOne
+	private Kullanici kullanici;
+
+	public Kullanici getKullanici() {
+		return kullanici;
+	}
+	public void setKullanici(Kullanici kullanici) {
+		this.kullanici = kullanici;
+	}
+	
+	/*------------*/
 	private double toplamTutar;
 	private int sepettekiler;
 	public int getId() {
@@ -19,12 +33,7 @@ public class Sepet {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getKullaniciId() {
-		return kullaniciId;
-	}
-	public void setKullaniciId(int kullaniciId) {
-		this.kullaniciId = kullaniciId;
-	}
+	 
 	public double getToplamTutar() {
 		return toplamTutar;
 	}
@@ -39,9 +48,17 @@ public class Sepet {
 	}
 	@Override
 	public String toString() {
-		return "Sepet [id=" + id + ", kullaniciId=" + kullaniciId
+		return "Sepet [id=" + id + ", kullanici=" + kullanici
 				+ ", toplamTutar=" + toplamTutar + ", sepettekiler="
 				+ sepettekiler + "]";
 	}
+	
+	/*
+	@Override
+	public String toString() {
+		return "Sepet [id=" + id 
+				+ ", toplamTutar=" + toplamTutar + ", sepettekiler="
+				+ sepettekiler + "]";
+	}*/
 	
 }

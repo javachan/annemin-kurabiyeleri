@@ -1,9 +1,11 @@
 package com.yilmazmehmet.anneminkurabiyeleribackend.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,16 @@ public class Kullanici {
 	private String role;
 	private String sifre;
 	private boolean aktifmi=true;
+	
+	@OneToOne(mappedBy="kullanici",cascade=CascadeType.ALL)
+	private Sepet sepet;
+	
+	public Sepet getSepet() {
+		return sepet;
+	}
+	public void setSepet(Sepet sepet) {
+		this.sepet = sepet;
+	}
 	public int getId() {
 		return id;
 	}

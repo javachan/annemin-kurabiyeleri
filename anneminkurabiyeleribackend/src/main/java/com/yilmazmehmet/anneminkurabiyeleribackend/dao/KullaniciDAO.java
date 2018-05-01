@@ -7,9 +7,10 @@ import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Sepet;
 public interface KullaniciDAO {
 
 	boolean kullaniciEkle(Kullanici kullanici);
+	Kullanici emaileGoreGetir(String email);
 	
 	boolean adresEkle(Adres adres);
 	
-	boolean sepetEkle(Sepet sepet);
+	boolean sepetGuncelle(Sepet sepet);
 	
 }
