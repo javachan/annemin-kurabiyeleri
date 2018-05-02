@@ -68,45 +68,93 @@ public class KullaniciTestCase {
 	 * }
 	 */
 	/*
+	 * @Test public void testEkle() {
+	 * 
+	 * kullanici = new Kullanici(); kullanici.setAd("Hasan");
+	 * kullanici.setSoyad("Mutlu"); kullanici.setEmail("hm@gmail.com");
+	 * kullanici.setRole("KULLANICI"); kullanici.setSifre("123456");
+	 * kullanici.setTelefon("05374942346");
+	 * 
+	 * 
+	 * 
+	 * 
+	 * if (kullanici.getRole().equals("KULLANICI")) { sepet = new Sepet();
+	 * sepet.setKullanici(kullanici);
+	 * 
+	 * kullanici.setSepet(sepet);
+	 * 
+	 * 
+	 * }
+	 * 
+	 * // kullanici ekle
+	 * 
+	 * assertEquals("Kullanici eklerken hata oldu", true,
+	 * kullaniciDAO.kullaniciEkle(kullanici));
+	 * 
+	 * 
+	 * }
+	 */
+	/*
+	 * @Test public void testSepetGuncelle(){
+	 * 
+	 * kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.com");
+	 * sepet=kullanici.getSepet(); sepet.setToplamTutar(5555);
+	 * sepet.setSepettekiler(2); assertEquals("Sepet guncelleniren hata olustu",
+	 * true,kullaniciDAO.sepetGuncelle(sepet));
+	 * 
+	 * }
+	 */
+	/*
+	 * @Test public void testAdresEkle() {
+	 * 
+	 * // kullanici eklememiz gerkeli kullanici = new Kullanici();
+	 * kullanici.setAd("Hasan"); kullanici.setSoyad("Mutlu");
+	 * kullanici.setEmail("hm@gmail.com"); kullanici.setRole("KULLANICI");
+	 * kullanici.setSifre("123456");
+	 * 
+	 * // kullanici ekle
+	 * 
+	 * assertEquals("Kullanici eklerken hata oldu", true,
+	 * kullaniciDAO.kullaniciEkle(kullanici));
+	 * 
+	 * // sonrada adess eklemliyiz adres = new Adres();
+	 * adres.setAdresBir("Colakli Mah. 43B");
+	 * adres.setAdresIki("Sok market yani"); adres.setSehir("Antalya");
+	 * adres.setIlce("Manavgat"); adres.setUlke("Turkiye");
+	 * adres.setPostaKodu("07605"); adres.setFatura(true);
+	 * adres.setKullanici(kullanici);
+	 * 
+	 * assertEquals("Adres eklerken hata oldu", true,
+	 * kullaniciDAO.adresEkle(adres)); // kargo adresi eklemeliyiz adres = new
+	 * Adres(); adres.setAdresBir("Colakli Mah. 43B");
+	 * adres.setAdresIki("Sok market yani"); adres.setSehir("Antalya");
+	 * adres.setIlce("Manavgat"); adres.setUlke("Turkiye");
+	 * adres.setPostaKodu("07605"); adres.setKargo(true);
+	 * adres.setKullanici(kullanici);
+	 * 
+	 * assertEquals("Kargo Adres eklerken hata oldu", true,
+	 * kullaniciDAO.adresEkle(adres)); }
+	 */
+	/*
+	 * @Test public void testAdresEkle(){
+	 * kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.com"); adres = new
+	 * Adres(); adres.setAdresBir("Colakli Mah. 83B");
+	 * adres.setAdresIki("A101 market yani"); adres.setSehir("Antalya");
+	 * adres.setIlce("Manavgat"); adres.setUlke("Turkiye");
+	 * adres.setPostaKodu("07605"); adres.setKargo(true);
+	 * adres.setKullanici(kullanici);
+	 * 
+	 * assertEquals("Kargo Adres eklerken hata oldu", true,
+	 * kullaniciDAO.adresEkle(adres));
+	 * 
+	 * }
+	 */
+
 	@Test
-	public void testEkle() {
-
-		kullanici = new Kullanici();
-		kullanici.setAd("Hasan");
-		kullanici.setSoyad("Mutlu");
-		kullanici.setEmail("hm@gmail.com");
-		kullanici.setRole("KULLANICI");
-		kullanici.setSifre("123456");
-		kullanici.setTelefon("05374942346");
-
-		
-		 
-
-		if (kullanici.getRole().equals("KULLANICI")) {
-			sepet = new Sepet();
-			sepet.setKullanici(kullanici);
-			
-			kullanici.setSepet(sepet);
-			 
- 
-		}
-		
-		// kullanici ekle
-
-				assertEquals("Kullanici eklerken hata oldu", true,
-						kullaniciDAO.kullaniciEkle(kullanici));
-
-
-	}*/
-	@Test 
-	public void testSepetGuncelle(){
-		
-		kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.com");
-		sepet=kullanici.getSepet();
-		sepet.setToplamTutar(5555);
-		sepet.setSepettekiler(2);
-		assertEquals("Sepet guncelleniren hata olustu", true,kullaniciDAO.sepetGuncelle(sepet));
-		
+	public void testAdresleriListele(){
+		kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.com");  
+				assertEquals("Bu kadar  kargo adres yok", 2,kullaniciDAO.kargoAdresleriniListele(kullanici).size());	 
+				assertEquals("Bu kadar fatura adres yok", "Antalya",kullaniciDAO.faturaAdresiGetir(kullanici).getSehir());	 
+				
 	}
-
 }

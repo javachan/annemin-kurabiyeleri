@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Adres {
@@ -11,7 +12,16 @@ public class Adres {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int kullaniciId;
+	
+	/*----*/
+	@ManyToOne
+	private Kullanici kullanici;
+	public Kullanici getKullanici() {
+		return kullanici;
+	}
+	public void setKullanici(Kullanici kullanici) {
+		this.kullanici = kullanici;
+	}
 	private String adresBir;
 	private String adresIki;
 	private String sehir;
@@ -26,12 +36,7 @@ public class Adres {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getKullaniciId() {
-		return kullaniciId;
-	}
-	public void setKullaniciId(int kullaniciId) {
-		this.kullaniciId = kullaniciId;
-	}
+	 
 	public String getAdresBir() {
 		return adresBir;
 	}
@@ -82,8 +87,7 @@ public class Adres {
 	}
 	@Override
 	public String toString() {
-		return "Adres [id=" + id + ", kullaniciId=" + kullaniciId
-				+ ", adresBir=" + adresBir + ", adresIki=" + adresIki
+		return "Adres [id=" + id +  ", adresBir=" + adresBir + ", adresIki=" + adresIki
 				+ ", sehir=" + sehir + ", ilce=" + ilce + ", ulke=" + ulke
 				+ ", postaKodu=" + postaKodu + ", kargo=" + kargo + ", fatura="
 				+ fatura + "]";

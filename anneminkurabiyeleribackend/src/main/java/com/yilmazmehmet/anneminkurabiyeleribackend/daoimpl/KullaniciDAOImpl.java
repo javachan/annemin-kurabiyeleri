@@ -1,5 +1,7 @@
 package com.yilmazmehmet.anneminkurabiyeleribackend.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -66,6 +68,38 @@ public class KullaniciDAOImpl implements KullaniciDAO {
 			 return null;
 		}
 		 
+	}
+
+	@Override
+	public Adres faturaAdresiGetir(Kullanici kullanici) {
+		String selectQuery ="FROM Adres WHERE kullanici=:kullanici AND fatura=:fatura";
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery,Adres.class)
+					.setParameter("kullanici", kullanici)
+					.setParameter("fatura", true)
+					.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public List<Adres> kargoAdresleriniListele(Kullanici kullanici) {
+		String selectQuery ="FROM Adres WHERE kullanici=:kullanici AND kargo=:kargo";
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery,Adres.class)
+					.setParameter("kullanici", kullanici)
+					.setParameter("kargo", true)
+					.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 }
