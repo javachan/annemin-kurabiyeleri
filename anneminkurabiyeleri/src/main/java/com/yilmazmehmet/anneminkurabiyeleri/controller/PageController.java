@@ -127,6 +127,13 @@ public class PageController {
 
 	}
 
-	 
+	@RequestMapping(value = "/kayit")
+	public ModelAndView kayit() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Iletisim");
+		 
+		return mv;
+	}
 
 }

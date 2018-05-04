@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+	<var name="kullanici"
+	class="com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kullanici" />
+
+<var name="fatura"
+	class="com.yilmazmehmet.anneminkurabiyeleribackend.dto.Adres" />
+
+	<!-- baslangic -->
+
+	<view-state id="kisi" view="flows/kayit/kisi-kayit" model="kullanici">
+		<transition on="fatura" to="fatura" />
+
+
+	</view-state>
+
+	<view-state id="fatura" view="flows/kayit/fatura-kayit" model="fatura">
+	
+	<transition on="kisi" to="kisi" />
+	<transition on="onay" to="onay" />
+	</view-state>
+
+
+	<view-state id="onay" view="flows/kayit/onay-kayit">
+	<transition on="kisi" to="kisi" />
+	<transition on="fatura" to="fatura" />
+	<transition on="basarili" to="basarili" />
+	</view-state>
+	
+	<!-- end state -->
+	<end-state id="anasayfa" view="externalRedirect:contextRelative:/" />
+	<end-state id="basarili" view="flows/kayit/basarili-kayit" />
+	<!-- Global donusum -->
+	<global-transitions>
+
+		<transition on="anasayfa" to="anasayfa" />
+	</global-transitions>
+</flow>
