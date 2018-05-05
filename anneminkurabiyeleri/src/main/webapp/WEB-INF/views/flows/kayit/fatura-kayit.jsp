@@ -30,6 +30,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="adresBir" class="form-control"
           placeholder="Birinci Adres Giriniz" />
+          
+          <sf:errors path="adresBir" cssClass="help-block" element="em" />
         </div>
        </div>
 
@@ -38,6 +40,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="adresIki" class="form-control"
           placeholder="Adres Ikiyi Giriniz" />
+          
+          <sf:errors path="adresIki" cssClass="help-block" element="em" />
         </div>
        </div>
 
@@ -46,6 +50,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="sehir" class="form-control"
           placeholder="Sehir Giriniz" />
+          
+          <sf:errors path="sehir" cssClass="help-block" element="em" />
         </div>
        </div>
        
@@ -54,6 +60,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="postaKodu" class="form-control"
           placeholder="XXXXXX" />
+          
+          <sf:errors path="postaKodu" cssClass="help-block" element="em" />
         </div>
        </div>       
       
@@ -64,6 +72,7 @@
         <div class="col-md-8">
          <sf:input type="text" path="ilce" class="form-control"
           placeholder="Ilce Giriniz" />
+          <sf:errors path="ilce" cssClass="help-block" element="em" />
         </div>
        </div>
        
@@ -72,6 +81,9 @@
         <div class="col-md-8">
          <sf:input type="text" path="ulke" class="form-control"
           placeholder="Ulke Giriniz" />
+          
+          
+          <sf:errors path="ulke" cssClass="help-block" element="em" />
         </div>
        </div>
        

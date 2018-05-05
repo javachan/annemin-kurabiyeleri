@@ -22,7 +22,7 @@
 	<!-- baslangic -->
 
 	<view-state id="kisi" view="flows/kayit/kisi-kayit" model="kullanici">
-		<transition on="fatura" to="fatura" />
+		<transition on="fatura" to="validate" />
 		<on-exit>
 		<evaluate expression="kayitHandler.kullaniciEkle(flowScope.kayitModel,kullanici)" />
 		
@@ -31,6 +31,13 @@
 
 
 	</view-state>
+	
+	<action-state id="validate">
+	
+	<evaluate expression="kayitHandler.kullaniciValidasyon(kullanici,messageContext)" />
+		<transition on="basarili" to="fatura" />
+		<transition on="hata" to="kisi" />
+	</action-state>
 
 	<view-state id="fatura" view="flows/kayit/fatura-kayit" model="fatura">
 	
@@ -64,6 +71,6 @@
 	<!-- Global donusum -->
 	<global-transitions>
 
-		<transition on="anasayfa" to="anasayfa" />
+		<transition on="anasayfa" to="anasayfa" validate="false"/>
 	</global-transitions>
 </flow>

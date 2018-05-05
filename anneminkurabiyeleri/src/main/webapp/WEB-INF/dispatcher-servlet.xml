@@ -1,3 +1,4 @@
+
 <beans xmlns = "http://www.springframework.org/schema/beans"
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -37,6 +38,7 @@
 	</wf:flow-registry>
 	<wf:flow-builder-services id="flowBuilderServices"
 	view-factory-creator="viewFactoryCreator"
+	validator="validator"
 	/>
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
@@ -50,4 +52,8 @@
 	<bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
          <property name="viewResolvers" ref="viewResolver" />
  	</bean>	
+ 	
+ 	<!-- validasyon bean -->
+ 	
+ 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
       </beans>

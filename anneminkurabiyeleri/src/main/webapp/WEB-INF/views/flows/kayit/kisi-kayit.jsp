@@ -29,6 +29,8 @@
      <div class="col-md-8">
       <sf:input type="text" path="ad" class="form-control"
        placeholder="Ad" />
+       
+       <sf:errors path="ad" cssClass="help-block" element="em" />
      </div>
     </div>
 
@@ -38,6 +40,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="soyad" class="form-control"
           placeholder="Soyad" />
+          
+          <sf:errors path="soyad" cssClass="help-block" element="em" />
         </div>
        </div>
       
@@ -46,6 +50,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="email" class="form-control"
           placeholder="abc@zyx.com" />
+          
+          <sf:errors path="email" cssClass="help-block" element="em" />
         </div>
        </div>
 
@@ -54,6 +60,8 @@
         <div class="col-md-8">
          <sf:input type="text" path="telefon" class="form-control"
           placeholder="XXXXXXXXXX" maxlength="10" />
+          
+          <sf:errors path="telefon" cssClass="help-block" element="em" />
         </div>
        </div>
        
@@ -62,8 +70,22 @@
         <div class="col-md-8">
          <sf:input type="password" path="sifre" class="form-control"
           placeholder="Sifre" />
+          
+          <sf:errors path="sifre" cssClass="help-block" element="em" />
         </div>
        </div>
+       
+       
+       <div class="form-group">
+        <label class="control-label col-md-4">Sifre Tekrar</label>
+        <div class="col-md-8">
+         <sf:input type="password" path="sifreOnayla" class="form-control"
+          placeholder="Sifreyi Tekrar Giriniz" />
+          
+          <sf:errors path="sifreOnayla" cssClass="help-block" element="em" />
+        </div>
+       </div>
+       
        
        <!-- radio button using bootstrap class of radio-inline -->
 	   <div class="form-group">

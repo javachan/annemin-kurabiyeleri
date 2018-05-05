@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="kullanici_detay")
@@ -20,14 +23,40 @@ public class Kullanici implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@NotBlank(message="Lutfen Ad Giriniz !")
 	private String ad;
+	
+	@NotBlank(message="Lutfen Soyad Giriniz !")
 	private String soyad;
+	
+	@NotBlank(message="Lutfen Email Giriniz !")
 	private String email;
+	
+	@NotBlank(message="Lutfen Telefon Giriniz !")
 	private String telefon;
+	
+	
 	private String role;
+	
+	@NotBlank(message="Lutfen Sifre Giriniz !")
 	private String sifre;
 	private boolean aktifmi=true;
 	
+	
+	
+	// sifre onaylama alani
+	@Transient
+	private String sifreOnayla;
+	
+	
+	
+	public String getSifreOnayla() {
+		return sifreOnayla;
+	}
+	public void setSifreOnayla(String sifreOnayla) {
+		this.sifreOnayla = sifreOnayla;
+	}
 	@OneToOne(mappedBy="kullanici",cascade=CascadeType.ALL)
 	private Sepet sepet;
 	

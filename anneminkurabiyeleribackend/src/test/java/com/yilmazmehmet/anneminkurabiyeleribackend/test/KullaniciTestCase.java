@@ -152,9 +152,9 @@ public class KullaniciTestCase {
 
 	@Test
 	public void testAdresleriListele(){
-		kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.com");  
-				assertEquals("Bu kadar  kargo adres yok", 2,kullaniciDAO.kargoAdresleriniListele(kullanici).size());	 
-				assertEquals("Bu kadar fatura adres yok", "Antalya",kullaniciDAO.faturaAdresiGetir(kullanici).getSehir());	 
+		kullanici=kullaniciDAO.emaileGoreGetir("hm@gmail.coma");  
+				assertEquals("email yok",true,kullaniciDAO.emaileGoreGetir(kullanici.getEmail()));	 
+				 
 				
 	}
 }

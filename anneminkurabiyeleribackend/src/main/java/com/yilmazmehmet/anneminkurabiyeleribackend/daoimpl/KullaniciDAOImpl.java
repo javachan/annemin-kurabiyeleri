@@ -57,7 +57,7 @@ public class KullaniciDAOImpl implements KullaniciDAO {
 
 	@Override
 	public Kullanici emaileGoreGetir(String email) {
-		String selectQuery="FROM Kullanici WHERE email=:email";
+		String selectQuery="FROM Kullanici WHERE email = :email";
 		try {
 			return sessionFactory.getCurrentSession()
 					.createQuery(selectQuery,Kullanici.class)

@@ -1,6 +1,8 @@
 package com.yilmazmehmet.anneminkurabiyeleri.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.yilmazmehmet.anneminkurabiyeleri.model.KayitModel;
@@ -41,19 +43,39 @@ public class KayitHandler {
 			kullanici.setSepet(sepet);
 
 		}
-		
+
 		kullaniciDAO.kullaniciEkle(kullanici);
-		
-		
-		Adres fatura=model.getFatura();
+
+		Adres fatura = model.getFatura();
 		fatura.setKullaniciId(kullanici.getId());
 		fatura.setFatura(true);
-		
+
 		kullaniciDAO.adresEkle(fatura);
-		
- 
 
 		String transitionValue = "basarili";
+		return transitionValue;
+	}
+
+	public String kullaniciValidasyon(Kullanici kullanici, MessageContext error) {
+
+		String transitionValue = "basarili";
+		// sifre kontrol
+		if (!(kullanici.getSifre().equals(kullanici.getSifreOnayla()))) {
+
+			error.addMessage(new MessageBuilder().error().source("sifreOnayla")
+					.defaultText("Sifreler Uyusmuyor").build());
+			transitionValue = "hata";
+		}
+
+		// benzersiz email
+
+		if (kullaniciDAO.emaileGoreGetir(kullanici.getEmail()) != null) {
+
+			error.addMessage(new MessageBuilder().error().source("email")
+					.defaultText("Bu email mevcut !!").build());
+
+			transitionValue = "hata";
+		}
 		return transitionValue;
 	}
 }

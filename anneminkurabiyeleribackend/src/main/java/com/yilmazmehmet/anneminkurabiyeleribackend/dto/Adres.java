@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.NotBlank;
  
 
 @Entity
@@ -33,12 +35,22 @@ public class Adres implements Serializable {
 		this.kullanici = kullanici;
 	}*/
 	
-	
+	@NotBlank(message="Lutfen Adres 1 Giriniz !")
 	private String adresBir;
+	
+	@NotBlank(message="Lutfen Adres 2 Giriniz !")
 	private String adresIki;
+	
+	@NotBlank(message="Lutfen Sehir Giriniz !")
 	private String sehir;
+	
+	@NotBlank(message="Lutfen Ilce Giriniz !")
 	private String ilce;
+	
+	@NotBlank(message="Lutfen Ulke Giriniz !")
 	private String ulke;
+	
+	@NotBlank(message="Lutfen Posta Kodu  Giriniz !")
 	private String postaKodu;
 	private boolean kargo;
 	private boolean fatura;
