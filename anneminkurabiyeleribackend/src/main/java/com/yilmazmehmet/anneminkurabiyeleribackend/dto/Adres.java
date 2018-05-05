@@ -2,11 +2,12 @@ package com.yilmazmehmet.anneminkurabiyeleribackend.dto;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+ 
 
 @Entity
 public class Adres implements Serializable {
@@ -20,7 +21,9 @@ public class Adres implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	
 	/*----*/
+	/*
 	@ManyToOne
 	private Kullanici kullanici;
 	public Kullanici getKullanici() {
@@ -28,7 +31,9 @@ public class Adres implements Serializable {
 	}
 	public void setKullanici(Kullanici kullanici) {
 		this.kullanici = kullanici;
-	}
+	}*/
+	
+	
 	private String adresBir;
 	private String adresIki;
 	private String sehir;
@@ -98,6 +103,15 @@ public class Adres implements Serializable {
 				+ ", sehir=" + sehir + ", ilce=" + ilce + ", ulke=" + ulke
 				+ ", postaKodu=" + postaKodu + ", kargo=" + kargo + ", fatura="
 				+ fatura + "]";
+	}
+	
+	@Column(name = "kullanici_id")
+	private int kullaniciId;
+	public int getKullaniciId() {
+		return kullaniciId;
+	}
+	public void setKullaniciId(int kullaniciId) {
+		this.kullaniciId = kullaniciId;
 	}
 	 
 

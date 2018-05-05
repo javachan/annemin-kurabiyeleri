@@ -102,4 +102,16 @@ public class KullaniciDAOImpl implements KullaniciDAO {
 		
 	}
 
+	@Override
+	public Adres faturaAdresiGetir(int kullaniciId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Adres> kargoAdresleriniListele(int kullaniciId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

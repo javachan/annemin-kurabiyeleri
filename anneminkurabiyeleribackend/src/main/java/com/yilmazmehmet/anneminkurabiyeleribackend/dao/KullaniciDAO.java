@@ -13,8 +13,8 @@ public interface KullaniciDAO {
 	
 	boolean adresEkle(Adres adres);
 	//alternatif
-	//Adres faturaAdresiGetir(int kullaniciId);
-	//List<Adres> kargoAdresleriniListele(int kullaniciId);
+	Adres faturaAdresiGetir(int kullaniciId);
+	List<Adres> kargoAdresleriniListele(int kullaniciId);
 	
 	Adres faturaAdresiGetir(Kullanici kullanici);
 	List<Adres> kargoAdresleriniListele(Kullanici kullanici);

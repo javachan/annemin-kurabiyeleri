@@ -10,11 +10,24 @@
 
 <var name="fatura"
 	class="com.yilmazmehmet.anneminkurabiyeleribackend.dto.Adres" />
+<!-- return kayitModel instance -->
+
+<on-start>
+
+<evaluate expression="kayitHandler.init()" result="flowScope.kayitModel"/>
+
+</on-start>
+
 
 	<!-- baslangic -->
 
 	<view-state id="kisi" view="flows/kayit/kisi-kayit" model="kullanici">
 		<transition on="fatura" to="fatura" />
+		<on-exit>
+		<evaluate expression="kayitHandler.kullaniciEkle(flowScope.kayitModel,kullanici)" />
+		
+		
+		</on-exit>
 
 
 	</view-state>
@@ -23,14 +36,27 @@
 	
 	<transition on="kisi" to="kisi" />
 	<transition on="onay" to="onay" />
+	
+	<on-exit>
+	<evaluate expression="kayitHandler.faturaEkle(flowScope.kayitModel,fatura)" />
+		
+	
+	</on-exit>
 	</view-state>
 
 
-	<view-state id="onay" view="flows/kayit/onay-kayit">
+	<view-state id="onay" view="flows/kayit/onay-kayit" model="flowScope.kayitModel">
 	<transition on="kisi" to="kisi" />
 	<transition on="fatura" to="fatura" />
-	<transition on="basarili" to="basarili" />
+	<transition on="gonder" to="gonder" />
 	</view-state>
+	
+	<action-state id="gonder">
+	<evaluate expression="kayitHandler.kaydet(flowScope.kayitModel)" />
+	<transition on="basarili" to="basarili"/>
+		
+	
+	</action-state>
 	
 	<!-- end state -->
 	<end-state id="anasayfa" view="externalRedirect:contextRelative:/" />
