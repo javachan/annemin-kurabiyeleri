@@ -1,8 +1,14 @@
 package com.yilmazmehmet.anneminkurabiyeleri.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -108,12 +114,14 @@ public class PageController {
 	// ürün detay
 
 	@RequestMapping(value = "/goster/{id}/urun")
-	public ModelAndView urunDetay(@PathVariable int id) throws UrunBulunamadiException {
+	public ModelAndView urunDetay(@PathVariable int id)
+			throws UrunBulunamadiException {
 
 		ModelAndView mv = new ModelAndView("page");
 		Urun urun = urunDAO.get(id);
-		
-		if(urun==null) throw new UrunBulunamadiException();
+
+		if (urun == null)
+			throw new UrunBulunamadiException();
 
 		urun.setGoruntulenme(urun.getGoruntulenme() + 1);
 		// goruntulenmeyý gunncellestur
@@ -133,34 +141,56 @@ public class PageController {
 
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Iletisim");
-		 
+
 		return mv;
 	}
-	
-	/*giris sayfasi*/
+
+	/* giris sayfasi */
 	@RequestMapping(value = "/login")
-	public ModelAndView giris(@RequestParam(name="error",required=false)String hata) {
+	public ModelAndView giris(
+			@RequestParam(name = "error", required = false) String hata,
+
+			@RequestParam(name = "logout", required = false) String logout) {
 
 		ModelAndView mv = new ModelAndView("giris");
-		
-		if(hata!=null){
-			
-			mv.addObject("mesaj","Hatali kullanici adi ve sifre");
+
+		if (hata != null) {
+
+			mv.addObject("mesaj", "Hatali kullanici adi ve sifre");
+		}
+
+		if (logout != null) {
+
+			mv.addObject("cikis", "Basarili Sekilde Cikis Yapildi!");
 		}
 		mv.addObject("title", "Giris");
-	 
+
 		return mv;
 	}
-	
-	//yetki yok sayfasi
+
+	// yetki yok sayfasi
 	@RequestMapping(value = "/yetkiniz-yok")
 	public ModelAndView yetkinizYok() {
 
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("title", "403 Yetkiniz Yok");
 		mv.addObject("hataBasligi", "Uppss!");
-		mv.addObject("hataAciklamasi", "Bu sayfayi goruntulemek icin yetkiniz yok !");
-	 
+		mv.addObject("hataAciklamasi",
+				"Bu sayfayi goruntulemek icin yetkiniz yok !");
+
 		return mv;
 	}
+
+	@RequestMapping(value = "/yap-logout")
+	public String cikis(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		if (auth != null) {
+
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+
+		return "redirect:/login?logout";
+	}
+
 }

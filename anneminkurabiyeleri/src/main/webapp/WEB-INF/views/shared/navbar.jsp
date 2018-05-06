@@ -62,7 +62,7 @@
 								</a></li>
 								<li class="divider" role="reparator"></li>
 							</security:authorize>
-							<li><a href="${contextRoot}/logout">Cikis</a></li>
+							<li><a href="${contextRoot}/yap-logout">Cikis</a></li>
 						</ul></li>
 				</security:authorize>
 			</ul>
