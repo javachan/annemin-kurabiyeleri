@@ -3,6 +3,7 @@ package com.yilmazmehmet.anneminkurabiyeleri.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.yilmazmehmet.anneminkurabiyeleri.model.KayitModel;
@@ -16,6 +17,9 @@ public class KayitHandler {
 
 	@Autowired
 	private KullaniciDAO kullaniciDAO;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	public KayitModel init() {
 
@@ -44,6 +48,9 @@ public class KayitHandler {
 
 		}
 
+		
+		kullanici.setSifre(passwordEncoder.encode(kullanici.getSifre()));
+		
 		kullaniciDAO.kullaniciEkle(kullanici);
 
 		Adres fatura = model.getFatura();

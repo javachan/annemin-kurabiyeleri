@@ -30,15 +30,18 @@ CREATE TABLE kullanici_detay (
 
 INSERT INTO kullanici_detay 
 (ad, soyad, role, aktifMi, sifre, email, telefon) 
-VALUES ('Mehmet', 'Yilmaz', 'ADMIN', true, 'admin', 'mehmet@cankaya.pro', '05374942346');
+VALUES ('Mehmet', 'Yilmaz', 'ADMIN', true, '$2b$10$jyWeis2YSQ.l75jg4mZjDeIgjYOkk59MU5ZVQCmklK9myAY07JFA.
+', 'mehmet@cankaya.pro', '05374942346');
 
 INSERT INTO kullanici_detay 
 (ad, soyad, role, aktifMi, sifre, email, telefon) 
-VALUES ('Ahmet', 'Yilmaz', 'SATICI', true, '123456', 'ahmet@cankaya.pro', '05374942347');
+VALUES ('Ahmet', 'Yilmaz', 'SATICI', true, '$2b$10$S/NJoWnmfcvL3h4gwI0i5OrOM4Ugtt8WfSUG0O1VyBPRF9dIyu.vy
+', 'ahmet@cankaya.pro', '05374942347');
 
 INSERT INTO kullanici_detay 
 (ad, soyad, role, aktifMi, sifre, email, telefon) 
-VALUES ('Deniz', 'Yilmaz', 'SATICI', true, '123456', 'deniz@cankaya.pro', '05374942348');
+VALUES ('Deniz', 'Yilmaz', 'SATICI', true, '$2b$10$S/NJoWnmfcvL3h4gwI0i5OrOM4Ugtt8WfSUG0O1VyBPRF9dIyu.vy
+', 'deniz@cankaya.pro', '05374942348');
 
 
 CREATE TABLE urun (
