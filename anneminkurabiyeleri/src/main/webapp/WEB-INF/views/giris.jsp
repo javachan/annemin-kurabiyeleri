@@ -19,10 +19,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<meta name="_csrf" content="${_csrf.token}">
-<meta name="_csrf_header" content="${_csrf.headerName}">
-
-
 <title>${title}-AnneminKurabiyelerii</title>
 <script>
 	window.menu = '${title}';
@@ -56,49 +52,83 @@
 <body>
 	<div class="wrapper">
 		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="${contextRoot}/anasayfa">Annemin
+						Kurabiyeleri</a>
+				</div>
+			</div>
+		</nav>
 
 
 		<!-- Page Content -->
 		<div class="content">
-			<!-- Anasayfa oldugu zaman -->
-			<c:if test="${anasayfaMi==true }">
-				<%@include file="home.jsp"%>
-			</c:if>
 
-			<!-- hakkimizda oldugu zaman -->
-			<c:if test="${hakkimizdaMi==true }">
-				<%@include file="hakkimizda.jsp"%>
-			</c:if>
+			<div class="container">
+				<c:if test="${not empty mesaj}">
+					<div class="col-md-offset-3 col-md-6">
 
-			<!-- iletisim oldugu zaman -->
-			<c:if test="${iletisimMi==true }">
-				<%@include file="iletisim.jsp"%>
-			</c:if>
+						<div class="alert alert-danger">${mesaj}</div>
 
 
-			<!-- kategori oldugu zaman -->
-			<c:if
-				test="${tumUrunleriListeleMi==true or kategoriyeGoreListeliMi==true }">
-				<%@include file="urunleriListele.jsp"%>
-			</c:if>
+					</div>
 
+				</c:if>
+				<div class="row">
 
+					<div class="col-md-offset-3 col-md-6">
 
-			<!-- urun detay -->
-			<c:if test="${urunDetayMi==true}">
-				<%@include file="urunDetay.jsp"%>
-			</c:if>
+						<div class="panel panel-primary">
 
+							<div class="panel-heading">
+								<h4>Login</h4>
+							</div>
 
+							<div class="panel-body">
+								<form action="${contextRoot}/login" method="POST"
+									class="form-horizontal" id="loginForm">
+									<div class="form-group">
+										<label for="username" class="col-md-4 control-label">Email:
+										</label>
+										<div class="col-md-8">
+											<input type="text" name="username" id="username"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="password" class="col-md-4 control-label">Sifre:
+										</label>
+										<div class="col-md-8">
+											<input type="password" name="password" id="password"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-offset-4 col-md-8">
+											<input type="submit" value="Giris" class="btn btn-primary" />
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
 
+										</div>
+									</div>
+								</form>
 
-			<!-- urun yonetim -->
-			<c:if test="${urunYonetimMi==true}">
-				<%@include file="urunYonetimi.jsp"%>
-			</c:if>
+							</div>
+							<div class="panel-footer">
+								<div class="text-right">
+									New User - <a href="${contextRoot}/register">Register Here</a>
+								</div>
+							</div>
+						</div>
 
+					</div>
 
+				</div>
+
+			</div>
 
 		</div>
 
@@ -115,15 +145,12 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
 
-		<!-- datatable -->
-		<script src="${js}/jquery.dataTables.js"></script>
-
-		<!-- datatable boostrap -->
-		<script src="${js}/dataTables.bootstrap.js"></script>
 
 
-		<!--bootbox -->
-		<script src="${js}/bootbox.min.js"></script>
+
+
+
+
 		<!-- Menu Link Aktif -->
 		<script src="${js}/myapp.js"></script>
 

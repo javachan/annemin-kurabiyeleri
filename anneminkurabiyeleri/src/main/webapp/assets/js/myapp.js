@@ -32,6 +32,19 @@ $(function() {
 		break;
 	}
 
+	//csrf token 
+	
+	var token=$('meta[name="_csrf"]').attr('content');
+	var header=$('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length>0 && header.length>0){
+		
+		
+		$(document).ajaxSend(function(e,xhr,options){
+			
+			xhr.setRequestHeader(header,token);
+		});
+	}
 	// datatable jquery için kodlar
 
 	var $table = $('#urunleriListeleTable');
@@ -386,5 +399,52 @@ $(function() {
 		
 	}
 	//----------------------------------
+	
+	
+	
+	// login kontrol form
+	
+	var $loginForm=$('#loginForm');
+	if($loginForm.length){
+		$loginForm.validate({
+			
+			rules :{
+				
+ 			username : {
+				required : true,
+				email :true
+			},
+			password :{
+				
+				required:true,
+			 
+			}
+			},
+			
+			messages : {
+				
+				username:{
+					required:'Lutfen kullanici adini giriniz .',
+					email:'Lutfen gecerli bir email giriniz'
+				},
+				password:{
+					
+					required:'Lutfen sifreyi giriniz ',
+					 
+				}
+					
+			},
+			errorElement:'em',
+			errorPlacement:function(error,element){
+				
+				error.addClass('help-block');
+				error.insertAfter(element);
+			}
+		 	
+		});
+		
+	
+		
+	}
 	
 });
