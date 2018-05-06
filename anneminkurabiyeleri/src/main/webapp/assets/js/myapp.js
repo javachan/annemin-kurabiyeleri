@@ -129,11 +129,22 @@ $(function() {
 									if (row.miktar < 1) {
 										str += '<a href="javascript::void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 									} else {
-										str += '<a href="'
+										if(kullaniciRole=='ADMIN'){
+											
+											str += '<a href="'
+												+ window.contextRoot
+												+ '/yonetim/'
+												+ data
+												+ '/urun" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
+										}else {
+											
+											str += '<a href="'
 												+ window.contextRoot
 												+ '/sepet/ekle/'
 												+ data
 												+ '/urun" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+										}
+										
 									}
 
 									return str;

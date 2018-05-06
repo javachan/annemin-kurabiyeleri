@@ -65,29 +65,40 @@
 				</c:otherwise>
 
 			</c:choose>
+			<security:authorize access="hasAuthority('KULLANICI')">
+				<c:choose>
 
-			<c:choose>
+					<c:when test="${urun.miktar < 1}">
 
-				<c:when test="${urun.miktar < 1}">
+						<a href="javascript:void(0)" class="btn btn-success disabled"><strike>
+								<span class="glyphicon glyphicon-shopping-cart"></span>Sepete
+								Ekle
+						</strike></a>
 
-					<a href="javascript:void(0)" class="btn btn-success disabled"><strike>
-							<span
-						class="glyphicon glyphicon-shopping-cart"></span>Sepete Ekle
-					</strike></a>
+					</c:when>
+					<c:otherwise>
 
-				</c:when>
-				<c:otherwise>
-
-					<a href="${contextRoot}/sepet/ekle/${urun.id}/urun"
-						class="btn btn-success"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Sepete Ekle</a>
-
-
+						<a href="${contextRoot}/sepet/ekle/${urun.id}/urun"
+							class="btn btn-success"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Sepete Ekle</a>
 
 
-				</c:otherwise>
 
-			</c:choose>
+
+					</c:otherwise>
+
+				</c:choose>
+			</security:authorize>
+			
+			<security:authorize access="hasAuthority('ADMIN')">
+			
+			<a href="${contextRoot}/yonetim/${urun.id}/urun"
+							class="btn btn-success"><span
+							class="glyphicon glyphicon-pencil"></span>Duzenle</a>
+
+			
+			
+			</security:authorize>
 
 
 			<a href="${contextRoot}/goster/hepsi/urunler" class="btn btn-success">Geri
