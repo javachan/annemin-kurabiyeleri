@@ -32,17 +32,16 @@ $(function() {
 		break;
 	}
 
-	//csrf token 
-	
-	var token=$('meta[name="_csrf"]').attr('content');
-	var header=$('meta[name="_csrf_header"]').attr('content');
-	
-	if(token.length>0 && header.length>0){
-		
-		
-		$(document).ajaxSend(function(e,xhr,options){
-			
-			xhr.setRequestHeader(header,token);
+	// csrf token
+
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+
+	if (token.length > 0 && header.length > 0) {
+
+		$(document).ajaxSend(function(e, xhr, options) {
+
+			xhr.setRequestHeader(header, token);
 		});
 	}
 	// datatable jquery için kodlar
@@ -125,28 +124,31 @@ $(function() {
 											+ '/goster/'
 											+ data
 											+ '/urun" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>&#160';
+									if (kullaniciRole == 'ADMIN') {
+										str += '<a href="'
+											+ window.contextRoot
+											+ '/yonetim/'
+											+ data
+											+ '/urun" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
+									}else{
+										
+										
+									
 
 									if (row.miktar < 1) {
 										str += '<a href="javascript::void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 									} else {
-										if(kullaniciRole=='ADMIN'){
-											
-											str += '<a href="'
-												+ window.contextRoot
-												+ '/yonetim/'
-												+ data
-												+ '/urun" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
-										}else {
-											
-											str += '<a href="'
+
+										
+
+										str += '<a href="'
 												+ window.contextRoot
 												+ '/sepet/ekle/'
 												+ data
 												+ '/urun" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-										}
-										
-									}
 
+									}
+									}
 									return str;
 								}
 
@@ -306,156 +308,160 @@ $(function() {
 											+ '/urun" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
 
 									return str;
-									 
 
 								}
 
 							}
 
 					],
-					
-					initComplete : function(){
-						
-						var api=this.api();
-						api.$('.switch input[type="checkbox"]')
-						.on(
-								'change',
-								function() {
 
-									var checkbox = $(this);
-									var checked = checkbox.prop('checked');
-									var dMsg = (checked) ? 'Aktif etmek istediginizden emin misiniz ?'
-											: 'Deaktif etmek istediginizden emin misiniz ?';
-									var value = checkbox.prop('value');
-									bootbox
-											.confirm({
+					initComplete : function() {
 
-												size : 'medium',
-												title : ' Urun Aktif & Deaktif',
-												message : dMsg,
-												callback : function(confirmed) {
+						var api = this.api();
+						api
+								.$('.switch input[type="checkbox"]')
+								.on(
+										'change',
+										function() {
 
-													if (confirmed) {
-														console.log(value);
-								var aktifUrl=window.contextRoot + '/yonetim/urun/'+value+'/aktifEtme';
-														
-									$.post(aktifUrl,function(data){
-										
-										bootbox
-										.alert({
-											side : 'medium',
-											title : 'Bilgilendirme',
-											message : data
+											var checkbox = $(this);
+											var checked = checkbox
+													.prop('checked');
+											var dMsg = (checked) ? 'Aktif etmek istediginizden emin misiniz ?'
+													: 'Deaktif etmek istediginizden emin misiniz ?';
+											var value = checkbox.prop('value');
+											bootbox
+													.confirm({
+
+														size : 'medium',
+														title : ' Urun Aktif & Deaktif',
+														message : dMsg,
+														callback : function(
+																confirmed) {
+
+															if (confirmed) {
+																console
+																		.log(value);
+																var aktifUrl = window.contextRoot
+																		+ '/yonetim/urun/'
+																		+ value
+																		+ '/aktifEtme';
+
+																$
+																		.post(
+																				aktifUrl,
+																				function(
+																						data) {
+
+																					bootbox
+																							.alert({
+																								side : 'medium',
+																								title : 'Bilgilendirme',
+																								message : data
+																							});
+
+																				})
+
+															} else {
+																checkbox
+																		.prop(
+																				'checked',
+																				!checked);
+															}
+														}
+													});
 										});
-										
-									})
-									
-									
-														
-													} else {
-														checkbox.prop('checked', !checked);
-													}
-												}
-											});
-								});
 					}
-					
+
 				});
 	}
 	// *********************************
-	
-	
+
 	// validasyon kodlari
-	
-	var $kategoriForm=$('#kategoriForm');
-	if($kategoriForm.length){
+
+	var $kategoriForm = $('#kategoriForm');
+	if ($kategoriForm.length) {
 		$kategoriForm.validate({
-			
-			rules :{
-				
- 			ad : {
-				required : true,
-				minlength :2
-			},
-			aciklama :{
-				
-				required:true,
-				minlength :2
-			}
-			},
-			
-			messages : {
-				
-				ad:{
-					required:'Lutfen kategori adi ekle',
-					minlength:'Minumum 2 karekter girmelisiniz'
+
+			rules : {
+
+				ad : {
+					required : true,
+					minlength : 2
 				},
-				aciklama:{
-					
-					required:'Lutfen kategori aciklamasi ekle',
-					minlength:'Minumum 2 karekter girmelisiniz'
+				aciklama : {
+
+					required : true,
+					minlength : 2
 				}
-					
 			},
-			errorElement:'em',
-			errorPlacement:function(error,element){
-				
+
+			messages : {
+
+				ad : {
+					required : 'Lutfen kategori adi ekle',
+					minlength : 'Minumum 2 karekter girmelisiniz'
+				},
+				aciklama : {
+
+					required : 'Lutfen kategori aciklamasi ekle',
+					minlength : 'Minumum 2 karekter girmelisiniz'
+				}
+
+			},
+			errorElement : 'em',
+			errorPlacement : function(error, element) {
+
 				error.addClass('help-block');
 				error.insertAfter(element);
 			}
-		 	
+
 		});
-		
-	
-		
+
 	}
-	//----------------------------------
-	
-	
-	
+	// ----------------------------------
+
 	// login kontrol form
-	
-	var $loginForm=$('#loginForm');
-	if($loginForm.length){
+
+	var $loginForm = $('#loginForm');
+	if ($loginForm.length) {
 		$loginForm.validate({
-			
-			rules :{
-				
- 			username : {
-				required : true,
-				email :true
-			},
-			password :{
-				
-				required:true,
-			 
-			}
-			},
-			
-			messages : {
-				
-				username:{
-					required:'Lutfen kullanici adini giriniz .',
-					email:'Lutfen gecerli bir email giriniz'
+
+			rules : {
+
+				username : {
+					required : true,
+					email : true
 				},
-				password:{
-					
-					required:'Lutfen sifreyi giriniz ',
-					 
+				password : {
+
+					required : true,
+
 				}
-					
 			},
-			errorElement:'em',
-			errorPlacement:function(error,element){
-				
+
+			messages : {
+
+				username : {
+					required : 'Lutfen kullanici adini giriniz .',
+					email : 'Lutfen gecerli bir email giriniz'
+				},
+				password : {
+
+					required : 'Lutfen sifreyi giriniz ',
+
+				}
+
+			},
+			errorElement : 'em',
+			errorPlacement : function(error, element) {
+
 				error.addClass('help-block');
 				error.insertAfter(element);
 			}
-		 	
+
 		});
-		
-	
-		
+
 	}
-	
+
 });

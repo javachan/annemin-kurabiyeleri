@@ -17,12 +17,10 @@
 				<div class="col-lg-12">
 
 					<c:if test="${tumUrunleriListeleMi==true }">
-					
-					<script>
-					
-					window.kategoriId ='';
-					
-					</script>
+
+						<script>
+							window.kategoriId = '';
+						</script>
 						<ol class="breadcrumb">
 
 
@@ -36,12 +34,10 @@
 
 
 					<c:if test="${kategoriyeGoreListeliMi==true }">
-					
-					<script>
-					
-					window.kategoriId ='${kategori.id}';
-					
-					</script>
+
+						<script>
+							window.kategoriId = '${kategori.id}';
+						</script>
 						<ol class="breadcrumb">
 
 
@@ -61,40 +57,50 @@
 			</div>
 
 			<div class="row">
-			<div class="col-xs-12">
-			
-			
-			<table id="urunleriListeleTable" class="table table-striped table-bordered">
-			
-			<thead>
-			<tr>
-			<th></th>
-			<th>Ad</th>
-			<th>Marka</th>
-			<th>Fiyat</th>
-			<th>Miktar</th>
-			<th></th>
-			</tr>
-			
-			</thead>
-			
-			<tfoot>
-			<tr>
-			<th></th>
-			<th>Ad</th>
-			<th>Marka</th>
-			<th>Fiyat</th>
-			<th>Miktar</th>
-						<th></th>
-			
-			</tr>
-			
-			</tfoot>
-			
-			</table>
-			
-			</div>
-			
+				<div class="col-xs-12">
+
+					<div class="container-fluid">
+
+						<div class="table-responsive">
+
+							<table id="urunleriListeleTable"
+								class="table table-striped table-bordered">
+
+								<thead>
+									<tr>
+										<th></th>
+										<th>Ad</th>
+										<th>Marka</th>
+										<th>Fiyat</th>
+										<th>Miktar</th>
+										<th></th>
+									</tr>
+
+								</thead>
+
+								<tfoot>
+									<tr>
+										<th></th>
+										<th>Ad</th>
+										<th>Marka</th>
+										<th>Fiyat</th>
+										<th>Miktar</th>
+										<th></th>
+
+									</tr>
+
+								</tfoot>
+
+							</table>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+
 			</div>
 		</div>
 		<!-- md9 kapa -->

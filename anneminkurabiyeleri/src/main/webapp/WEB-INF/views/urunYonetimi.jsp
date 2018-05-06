@@ -160,13 +160,13 @@
 
 		<div class="col-xs-12">
 
-			<div style="overflow: auto">
+
+			<div class="container-fluid">
 
 
-
-
-
-
+				<div class="table-responsive">
+				
+				
 				<table id="adminUrunListele"
 					class="table table-striped table-bordered">
 
@@ -200,21 +200,15 @@
 					</tfoot>
 
 				</table>
-
-
-
-
-
-
-
-
-
-
-
-
+				
+				
+				
+				</div>
 
 
 			</div>
+
+
 		</div>
 
 
@@ -224,14 +218,15 @@
 
 
 
-	<div class="modal fade" id="myKategoriModal" role="dialog" tabindex="-1">
+	<div class="modal fade" id="myKategoriModal" role="dialog"
+		tabindex="-1">
 
 
 		<div class="modal-dialog" role="document">
 
 			<div class="modal-content">
-			
-			<!-- modal baslik -->
+
+				<!-- modal baslik -->
 
 				<div class="modal-header">
 
@@ -245,48 +240,53 @@
 
 				</div>
 				<div class="modal-body">
-				
-				<!-- Kategori form -->
-				
-				<sf:form id="kategoriForm" modelAttribute="kategori" action="${contextRoot}/yonetim/kategori" method="POST" class="form-horizontal">
-				
-				
-				<div class="form-group">
-				
-				<label for="k_ad" class="control-label col-md-4">Kategori Adi</label>
-				<div class="col-md-8">
-				
-				<sf:input type="text" path="ad" id="k_ad" class="form-control"/>
-				
-				</div>
-				</div>
-				
-				
-				<div class="form-group">
-				
-				<label for="k_aciklama" class="control-label col-md-4">Aciklama</label>
-				<div class="col-md-8">
-				
-				<sf:textarea cols="" rows="5" type="text" path="aciklama" id="aciklama" class="form-control"/>
-				
-				</div>
-				</div>
-				
-				
-				<div class="form-group">
-				
-				 
-				<div class="col-md-offset-4 col-md-8">
-				
-				 <input type="submit" value="Kategori Ekle" class="btn btn-primary"/>
-				
-				</div>
-				</div>
-				
-				
-				
-				</sf:form>
-				
+
+					<!-- Kategori form -->
+
+					<sf:form id="kategoriForm" modelAttribute="kategori"
+						action="${contextRoot}/yonetim/kategori" method="POST"
+						class="form-horizontal">
+
+
+						<div class="form-group">
+
+							<label for="k_ad" class="control-label col-md-4">Kategori
+								Adi</label>
+							<div class="col-md-8">
+
+								<sf:input type="text" path="ad" id="k_ad" class="form-control" />
+
+							</div>
+						</div>
+
+
+						<div class="form-group">
+
+							<label for="k_aciklama" class="control-label col-md-4">Aciklama</label>
+							<div class="col-md-8">
+
+								<sf:textarea cols="" rows="5" type="text" path="aciklama"
+									id="aciklama" class="form-control" />
+
+							</div>
+						</div>
+
+
+						<div class="form-group">
+
+
+							<div class="col-md-offset-4 col-md-8">
+
+								<input type="submit" value="Kategori Ekle"
+									class="btn btn-primary" />
+
+							</div>
+						</div>
+
+
+
+					</sf:form>
+
 				</div>
 
 			</div>
