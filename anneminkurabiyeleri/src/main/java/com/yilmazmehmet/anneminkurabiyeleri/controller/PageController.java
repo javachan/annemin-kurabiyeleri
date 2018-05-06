@@ -151,4 +151,16 @@ public class PageController {
 	 
 		return mv;
 	}
+	
+	//yetki yok sayfasi
+	@RequestMapping(value = "/yetkiniz-yok")
+	public ModelAndView yetkinizYok() {
+
+		ModelAndView mv = new ModelAndView("error");
+		mv.addObject("title", "403 Yetkiniz Yok");
+		mv.addObject("hataBasligi", "Uppss!");
+		mv.addObject("hataAciklamasi", "Bu sayfayi goruntulemek icin yetkiniz yok !");
+	 
+		return mv;
+	}
 }

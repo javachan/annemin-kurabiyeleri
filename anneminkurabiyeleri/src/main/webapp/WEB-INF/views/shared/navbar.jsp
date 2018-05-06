@@ -32,7 +32,7 @@
 				<li id="kayit"><a
 					href="${contextRoot }/kayit">Kaydol</a></li>
 				<li id="giris"><a
-					href="${contextRoot }/giris">Giris</a></li>
+					href="${contextRoot }/login">Giris</a></li>
 
 			</ul>
 		</div>

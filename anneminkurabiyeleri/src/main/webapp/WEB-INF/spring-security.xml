@@ -12,11 +12,15 @@
 	<context:component-scan base-package="com.yilmazmehmet.anneminkurabiyeleribackend" />
 	<http pattern="/resources/**" security="none"></http>
 	<http>
+	<!-- sadece admin -->
+		<intercept-url pattern="/yonetim/**" access="hasAuthority('ADMIN')" />
+		<!-- sadece kayitli kullanicilar -->
+		<intercept-url pattern="/sepet/**" access="hasAuthority('KULLANICI')" />
+		<!-- herkes -->
 		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/**" access="hasAuthority('KULLANICI')" />
-
-
+		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" />
+		<access-denied-handler error-page="/yetkiniz-yok"/>
 		<logout />
 	</http>
 
