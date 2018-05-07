@@ -200,6 +200,18 @@ input:checked + .slider:before {
 	height:100px;
 	
 }
+
+.cartImg2{
+	width: 320px;
+	height:150px;
+	
+}
+
+.imgSlayt{
+	width: 800px;
+	height:130px;
+	
+}
 .unavailable{
 	
 	

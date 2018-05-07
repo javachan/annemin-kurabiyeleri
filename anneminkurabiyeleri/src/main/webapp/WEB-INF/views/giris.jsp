@@ -95,7 +95,7 @@
 						<div class="panel panel-primary">
 
 							<div class="panel-heading">
-								<h4>Login</h4>
+								<h4>Kullanici Girisi</h4>
 							</div>
 
 							<div class="panel-body">
@@ -130,7 +130,7 @@
 							</div>
 							<div class="panel-footer">
 								<div class="text-right">
-									New User - <a href="${contextRoot}/register">Register Here</a>
+									 <a href="${contextRoot}/kayit">Yeni Kullanici</a>
 								</div>
 							</div>
 						</div>

@@ -3,6 +3,7 @@ package com.yilmazmehmet.anneminkurabiyeleribackend.daoimpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,6 +97,33 @@ public class UrunDAOImpl implements UrunDAO {
 				.createQuery("FROM Urun WHERE aktifMi = :aktifMi ORDER BY id",
 						Urun.class).setParameter("aktifMi", true)
 				.setFirstResult(0).setMaxResults(sayi).getResultList();
+	}
+
+	@Override
+	public List<Urun> listeleAnasayfa() {
+		
+		String anasayfa="FROM Urun WHERE aktifMi=:aktifMi";
+		Query query = sessionFactory.getCurrentSession().createQuery(anasayfa);
+		query.setFirstResult(0);
+		query.setMaxResults(9);
+		query.setParameter("aktifMi", true);
+		
+		return query.getResultList();
+		
+		
+		
+		 
+	}
+
+	@Override
+	public List<Urun> listeleSlide() {
+		String anasayfa="FROM Urun WHERE aktifMi=:aktifMi";
+		Query query = sessionFactory.getCurrentSession().createQuery(anasayfa);
+		query.setFirstResult(0);
+		query.setMaxResults(3);
+		query.setParameter("aktifMi", true);
+		
+		return query.getResultList();
 	}
 
 }

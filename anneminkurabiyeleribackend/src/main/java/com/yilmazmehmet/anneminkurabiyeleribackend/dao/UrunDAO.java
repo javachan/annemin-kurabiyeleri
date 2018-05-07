@@ -8,6 +8,8 @@ public interface UrunDAO {
 
 	Urun get(int urunId);
 	List<Urun> listele();
+	List<Urun> listeleAnasayfa();
+	List<Urun> listeleSlide();
 	boolean ekle(Urun urun);
 	boolean guncelle(Urun urun);
 	boolean sil(Urun urun);

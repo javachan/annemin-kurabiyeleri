@@ -26,7 +26,19 @@ public class KategoriDAOImpl implements KategoriDAO {
 		
 		return query.getResultList();
 	}
-
+	
+	/*
+	@Override
+	public List<Kategori> listele() {
+		String aktifKategoriGetir="FROM Kategori WHERE aktif=:aktif";
+		Query query = sessionFactory.getCurrentSession().createQuery(aktifKategoriGetir);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		query.setParameter("aktif", true);
+		
+		return query.getResultList();
+	}
+*/
 	// tek kategori getirme
 	@Override
 	public Kategori get(int id) {

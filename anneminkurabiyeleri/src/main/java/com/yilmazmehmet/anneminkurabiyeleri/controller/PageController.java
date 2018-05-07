@@ -41,6 +41,8 @@ public class PageController {
 		logger.debug("Page Controller index metot -DEBUG");
 		// kategorilri getirme
 		mv.addObject("kategoriler", kategoriDAO.listele());
+		mv.addObject("urunler",urunDAO.listeleAnasayfa());
+		mv.addObject("urunlerSlide",urunDAO.listeleSlide());
 
 		mv.addObject("anasayfaMi", true);
 		return mv;
