@@ -65,4 +65,22 @@ public class SepetService {
 		}
 		
 	}
+
+	public String sepetAlanSil(int sepetAlanId) {
+		 SepetAlani sepetAlani=sepetAlaniDAO.get(sepetAlanId);
+		 
+		 if(sepetAlani==null){
+			 return "sonuc=hata";
+		 }
+		 else{
+			 
+			 Sepet sepet = this.sepetGetir();
+			 sepet.setToplamTutar(sepet.getToplamTutar()-sepetAlani.getToplam());
+			 sepet.setSepettekiler(sepet.getSepettekiler()-1);
+			 sepetAlaniDAO.sepetGuncelle(sepet);
+			 sepetAlaniDAO.sil(sepetAlani);
+			 return "sonuc=silindi";
+		 }
+}
+	
 }

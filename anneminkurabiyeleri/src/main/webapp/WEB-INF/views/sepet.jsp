@@ -58,7 +58,7 @@
 							<td data-th="Subtotal" class="text-center">${sepetAlan.toplam} &#8378;</td>
 							<td class="actions" data-th="">
 								<button type="button" name="sepetYenile" value="${sepetAlan.id}"class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
-								<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash-o"></span></button>								
+								<a href="${contextRoot}/sepet/${sepetAlan.id}/sil" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>								
 							</td>
 						</tr>
 						
