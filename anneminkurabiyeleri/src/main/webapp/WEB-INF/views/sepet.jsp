@@ -70,7 +70,7 @@
 							<td class="text-center"><strong>Toplam :${kullaniciModel.sepet.toplamTutar} &#8378;</strong></td>
 						</tr>
 						<tr>
-							<td><a href="${contextRoot}/anasayfa" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Alisverise Devam Et</a></td>
+							<td><a href="${contextRoot }/goster/hepsi/urunler"" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Alisverise Devam Et</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Toplam :${kullaniciModel.sepet.toplamTutar} &#8378;</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Odemeye Gec <span class="glyphicon glyphicon-chevron-right"></span></a></td>

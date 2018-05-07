@@ -80,7 +80,7 @@ public class SepetAlaniDAOImpl implements SepetAlaniDAO {
 
 	@Override
 	public SepetAlani sepetVeUruneGoregetir(int sepetId, int urunId) {
-		String query="From SepetAlani WHERE sepetId=:sepetId AND urun.id =: urunId";
+		String query="FROM SepetAlani WHERE sepetId=:sepetId AND urun.id =:urunId";
 		try {
 			return sessionFactory.getCurrentSession()
 					.createQuery(query,SepetAlani.class)

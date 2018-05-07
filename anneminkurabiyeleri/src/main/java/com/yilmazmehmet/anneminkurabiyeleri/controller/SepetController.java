@@ -33,9 +33,21 @@ public class SepetController {
 				mv.addObject("mesaj", "Sepet Silindi !");
 
 				break;
+			case "eklendi":
+				mv.addObject("mesaj", "Sepete eklendi !");
+
+				break;
 
 			case "hata":
 				mv.addObject("mesaj", "Yanlis giden birseyler var!");
+
+				break;
+			case "maximum":
+				mv.addObject("mesaj", "Bu urun maximum satin almaya ulasti!!");
+
+				break;
+			case "mevcutDegil":
+				mv.addObject("mesaj", "Stokta yeterli urun yok!");
 
 				break;
 			}
@@ -54,7 +66,7 @@ public class SepetController {
 	public String sepetGuncelle(@PathVariable int sepetAlanId,
 			@RequestParam int adet) {
 
-		String response = sepetService.sepetAlanGuncelle(sepetAlanId, adet);
+		String response = sepetService.sepetAlaniYonet(sepetAlanId, adet);
 
 		return "redirect:/sepet/goster?" + response;
 	}
@@ -63,6 +75,14 @@ public class SepetController {
 	public String sepetSil(@PathVariable int sepetAlanId) {
 
 		String response = sepetService.sepetAlanSil(sepetAlanId);
+
+		return "redirect:/sepet/goster?" + response;
+	}
+
+	@RequestMapping("/ekle/{urunId}/urun")
+	public String sepeteEkle(@PathVariable int urunId) {
+
+		String response = sepetService.sepetAlanEkle(urunId);
 
 		return "redirect:/sepet/goster?" + response;
 	}

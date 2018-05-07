@@ -165,44 +165,44 @@
 
 
 				<div class="table-responsive">
-				
-				
-				<table id="adminUrunListele"
-					class="table table-striped table-bordered">
 
 
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Ad</th>
-							<th>Marka</th>
-							<th>Miktar</th>
-							<th>Fiyat</th>
-							<th>Aktif</th>
-							<th>Duzenle</th>
-						</tr>
+					<table id="adminUrunListele"
+						class="table table-striped table-bordered">
 
-					</thead>
 
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Ad</th>
-							<th>Marka</th>
-							<th>Miktar</th>
-							<th>Fiyat</th>
-							<th>Aktif</th>
-							<th>Duzenle</th>
-						</tr>
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Ad</th>
+								<th>Marka</th>
+								<th>Miktar</th>
+								<th>Fiyat</th>
+								<th>Aktif</th>
+								<th>Duzenle</th>
+							</tr>
 
-					</tfoot>
+						</thead>
 
-				</table>
-				
-				
-				
+						<tfoot>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Ad</th>
+								<th>Marka</th>
+								<th>Miktar</th>
+								<th>Fiyat</th>
+								<th>Aktif</th>
+								<th>Duzenle</th>
+							</tr>
+
+						</tfoot>
+
+					</table>
+
+
+
 				</div>
 
 
