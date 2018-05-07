@@ -15,6 +15,10 @@ $(function() {
 	case 'Urunleri Yonet':
 		$('#urunleriYonet').addClass('active');
 		break;
+		
+	case 'Kullanici Sepeti':
+		$('#kullaniciSepet').addClass('active');
+		break;
 	default:
 		if (menu == "Anasayfa")
 			break;
@@ -463,5 +467,42 @@ $(function() {
 		});
 
 	}
+	
+	
+	// sepet yenileme button
+	
+	$('button[name="sepetYenile"]').click(function(){
+		
+		var sepetAlanId=$(this).attr('value');
+		var sayiElement=$('#count_'+sepetAlanId);
+		var orjinalSayi=sayiElement.attr('value');
+		var mevcutSayi=sayiElement.val();
+		
+		//sayi degistiginde calisacak 
+		
+		if(mevcutSayi!==orjinalSayi){
+			
+		 if(mevcutSayi<1||mevcutSayi>3){
+			 
+			 sayiElement.val(orjinalSayi);
+			 bootbox.alert({
+			
+				 size:'medium',
+				 title:'Hata',
+				 message :'Urun sayisi min 1 max 3 olabilir !'
+			 });
+			 
+		 }
+		 else {
+			 
+			 var guncellemeUrl=window.contextRoot + '/sepet/'+sepetAlanId + '/guncelle?adet='+mevcutSayi;
+			 
+			 // ilerleme controller
+			 window.location.href=guncellemeUrl;
+			 
+		 }
+		}
+	});
+	
 
 });

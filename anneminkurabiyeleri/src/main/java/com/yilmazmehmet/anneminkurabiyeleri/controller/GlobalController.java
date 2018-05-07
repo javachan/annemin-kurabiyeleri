@@ -22,6 +22,7 @@ public class GlobalController {
 	private KullaniciDAO kullaniciDAO;
 	
 	private KullaniciModel kullaniciModel=null;
+	
 	@ModelAttribute("kullaniciModel")
 	public KullaniciModel getKullaniciModel(){
 		

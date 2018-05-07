@@ -100,6 +100,13 @@
 
 
 
+			<!-- sepet -->
+			<c:if test="${sepetGosterTiklandi==true}">
+				<%@include file="sepet.jsp"%>
+			</c:if>
+
+
+
 		</div>
 
 		<%@include file="./shared/footer.jsp"%>

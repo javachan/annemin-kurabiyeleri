@@ -4,8 +4,7 @@ import java.util.List;
 
 import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Adres;
 import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Kullanici;
-import com.yilmazmehmet.anneminkurabiyeleribackend.dto.Sepet;
-
+ 
 public interface KullaniciDAO {
 
 	boolean kullaniciEkle(Kullanici kullanici);
@@ -20,6 +19,6 @@ public interface KullaniciDAO {
 	List<Adres> kargoAdresleriniListele(Kullanici kullanici);
 	
 	
-	boolean sepetGuncelle(Sepet sepet);
+
 	
 }

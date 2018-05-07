@@ -21,6 +21,7 @@ public class UrunDAOImpl implements UrunDAO {
 	@Override
 	public Urun get(int urunId) {
 		try {
+
 			return sessionFactory.getCurrentSession().get(Urun.class,
 					Integer.valueOf(urunId));
 		} catch (Exception e) {
@@ -93,11 +94,8 @@ public class UrunDAOImpl implements UrunDAO {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery("FROM Urun WHERE aktifMi = :aktifMi ORDER BY id",
-						Urun.class)
-						.setParameter("aktifMi", true)
-						.setFirstResult(0)
-						.setMaxResults(sayi)
-						.getResultList();
+						Urun.class).setParameter("aktifMi", true)
+				.setFirstResult(0).setMaxResults(sayi).getResultList();
 	}
 
 }

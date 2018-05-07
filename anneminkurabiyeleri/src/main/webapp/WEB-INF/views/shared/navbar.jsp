@@ -46,7 +46,7 @@
 
 
 
-					<li class="dropdown"><a hred="$javascript:void(0)"
+					<li class="dropdown" id="kullaniciSepet"><a hred="$javascript:void(0)"
 						class="btn btn-default dropdown-toggle" id="dropdownMenu1"
 						data-toggle="dropdown">${kullaniciModel.adSoyad}<span
 							class="caret"></span></a>
@@ -55,7 +55,7 @@
 							<security:authorize access="hasAuthority('KULLANICI')">
 
 
-								<li><a href="${contextRoot}/sepet"> <span
+								<li><a href="${contextRoot}/sepet/goster"> <span
 										class="glyphicon glyphicon-shopping-cart"></span> <span
 										class="badge">${kullaniciModel.sepet.sepettekiler }</span> -
 										${kullaniciModel.sepet.toplamTutar} &#8378;
