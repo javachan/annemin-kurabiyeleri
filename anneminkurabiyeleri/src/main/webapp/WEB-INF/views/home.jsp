@@ -76,11 +76,23 @@
 									${urun.aciklama}
 								</p>
 							</div>
+							
+							<security:authorize access="hasAuthority('KULLANICI')">
 							<div class="ratings">
 								<a href="${contextRoot}/sepet/ekle/${urun.id}/urun"
 							class="btn btn-success"><span
 							class="glyphicon glyphicon-shopping-cart"></span>Sepete Ekle</a>
 							</div>
+							</security:authorize>
+							
+							
+							<security:authorize access="hasAuthority('ADMIN')">
+							<div class="ratings">
+								<a href="${contextRoot}/yonetim/${urun.id}/urun"
+							class="btn btn-success"><span
+							class="glyphicon glyphicon-pencil"></span>Duzenle</a>
+							</div>
+							</security:authorize>
 						</div>
 					</div>
 
